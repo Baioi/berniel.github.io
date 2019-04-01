@@ -100,18 +100,16 @@
 <meta name="keywords" content="搭建">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用Hexo搭建Github博客">
-<meta property="og:url" content="https://berniel.github.io/2019/04/01/construct/index.html">
+<meta property="og:url" content="https://berniel.github.io/2019/04/01/construct/construct/index.html">
 <meta property="og:site_name" content="Bernie Liang&#39;s Blog">
 <meta property="og:description" content="博客搭建完辣！来分享一下搭建过程~环境：Win10">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://berniel.github.io/2019/04/01/construct/construct_1.jpg">
-<meta property="og:image" content="https://berniel.github.io/2019/04/01/construct/construct_2.jpg">
-<meta property="og:image" content="https://berniel.github.io/2019/04/01/construct/construct_3.jpg">
-<meta property="og:updated_time" content="2019-04-01T06:42:54.295Z">
+<meta property="og:image" content="https://berniel.github.io/2019/04/01/construct/construct/images/construct_1.jpg">
+<meta property="og:updated_time" content="2019-04-01T06:28:48.722Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用Hexo搭建Github博客">
 <meta name="twitter:description" content="博客搭建完辣！来分享一下搭建过程~环境：Win10">
-<meta name="twitter:image" content="https://berniel.github.io/2019/04/01/construct/construct_1.jpg">
+<meta name="twitter:image" content="https://berniel.github.io/2019/04/01/construct/construct/images/construct_1.jpg">
 
 
 
@@ -121,7 +119,7 @@
 
   
   
-  <link rel="canonical" href="https://berniel.github.io/2019/04/01/construct/">
+  <link rel="canonical" href="https://berniel.github.io/2019/04/01/construct/construct/">
 
 
 
@@ -351,7 +349,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://berniel.github.io/2019/04/01/construct/">
+    <link itemprop="mainEntityOfPage" href="https://berniel.github.io/2019/04/01/construct/construct/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bernie Liang">
@@ -394,7 +392,7 @@
                 
               
 
-              <time title="创建时间：2019-04-01 12:56:31 / 修改时间：14:42:54" itemprop="dateCreated datePublished" datetime="2019-04-01T12:56:31+08:00">2019-04-01</time>
+              <time title="创建时间：2019-04-01 12:56:31 / 修改时间：14:28:48" itemprop="dateCreated datePublished" datetime="2019-04-01T12:56:31+08:00">2019-04-01</time>
             
 
             
@@ -451,40 +449,17 @@
 <li><p>开启服务</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server //hexo s</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>浏览器打开<a href="localhost:4000" target="_blank" rel="noopener">localhost:4000</a>查看本地搭建的博客。搭建出来的博客大概长下面这个样子。<br><img src="/2019/04/01/construct/construct_1.jpg" alt="avatar"></p>
+<li><p>浏览器打开<a href="localhost:4000" target="_blank" rel="noopener">localhost:4000</a>查看本地搭建的博客。搭建出来的博客大概长下面这个样子。<br><img src="/2019/04/01/construct/construct/images/construct_1.jpg" alt="avatar"></p>
 </li>
 </ol>
-<h3 id="4-安装git"><a href="#4-安装git" class="headerlink" title="4. 安装git"></a>4. 安装git</h3><p>如果你的电脑没有配置过git的话，还需要安装<a href="https://gitforwindows.org/" target="_blank" rel="noopener">git</a>。安装完成后，cmd输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git --version</span><br></pre></td></tr></table></figure></p>
-<p>应输出版本号。</p>
-<h2 id="二、配置Github"><a href="#二、配置Github" class="headerlink" title="二、配置Github"></a>二、配置Github</h2><h3 id="1-创建仓库"><a href="#1-创建仓库" class="headerlink" title="1. 创建仓库"></a>1. 创建仓库</h3><p>在Github上创建一个新的仓库，仓库名字叫做：xxx.github.io（xxx是你在github上的用户名），为了直观看到这个仓库名和网址的关系，不妨在创建的时候生成一个readme。<br><img src="/2019/04/01/construct/construct_2.jpg" alt="avatar"><br>创建完成后，进入新建的仓库的Settings-GitHub Pages，可以看到提示</p>
-<pre><code>Your site is published at https://xxx.github.io
-</code></pre><p>自此，xxx.github.io就是博客的地址了。如果不用xxx.github.io作为仓库名字的话，它生成的地址会变成 xxx.github.io/blablabla ，徒增繁琐。<br><img src="/2019/04/01/construct/construct_3.jpg" alt="avatar"></p>
-<h3 id="2-生成SSH"><a href="#2-生成SSH" class="headerlink" title="2. 生成SSH"></a>2. 生成SSH</h3><p>打开cmd/git bash，输入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;yourname&quot;</span><br><span class="line">git config --global user.email &quot;youremail&quot;</span><br></pre></td></tr></table></figure></p>
-<p>这里的yourname输入你的GitHub用户名，youremail输入你GitHub的邮箱。这样GitHub才能知道你是不是对应它的账户。然后创建SSH：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;youremail&quot;</span><br></pre></td></tr></table></figure></p>
-<p>在命令行中会提示.ssh生成的位置，找到这个文件夹（Windows下一般为C:\Users\你的用户名），打开文件夹下的id_rsa.pub文件，全选，复制。</p>
-<pre><code>ssh，简单来讲，就是一个秘钥，其中，id_rsa是你这台电脑的私人秘钥，不能给别人看的，id_rsa.pub是公共秘钥，可以随便给别人看。把这个公钥放在GitHub上，这样当你链接GitHub自己的账户时，它就会根据公钥匹配你的私钥，当能够相互匹配时，才能够顺利的通过git上传你的文件到GitHub上。
-</code></pre><p>然后在Github的Setting里找到SSH and GPG keys，点击<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">New SSH key</span><br></pre></td></tr></table></figure></p>
-<p>把复制到的id_rsa.pub文件内容粘贴进去。在cmd/git bash中，输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure></p>
-<p>查看是否成功。</p>
-<h3 id="3-Hexo-gt-Github"><a href="#3-Hexo-gt-Github" class="headerlink" title="3. Hexo -&gt; Github"></a>3. Hexo -&gt; Github</h3><p>首先配置_config.yml，修改deploy项：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://github.com/你的Github用户名/你的Github用户名.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure></p>
-<p>然后安装部署命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></p>
-<p>把本地的Hexo部署到Github上：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo generate</span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure></p>
-<p>部署完成后，访问https://你的Github用户名.github.io 就可以看到你的博客了！</p>
-<h2 id="三、Hexo相关"><a href="#三、Hexo相关" class="headerlink" title="三、Hexo相关"></a>三、Hexo相关</h2><h3 id="1-Hexo主题"><a href="#1-Hexo主题" class="headerlink" title="1. Hexo主题"></a>1. Hexo主题</h3><p>官方的主题网址为<a href="https://hexo.io/themes/" target="_blank" rel="noopener">https://hexo.io/themes/</a>。</p>
-<p>找了一个多小时，最后还是选择了用的人最多、看起来简洁酷炫的<a href="https://github.com/theme-next/hexo-theme-next" target="_blank" rel="noopener">NexT</a>，<a href="https://theme-next.org/" target="_blank" rel="noopener">DEMO</a>。这里有一个超赞的NexT的配置博客：<a href="https://www.jianshu.com/p/9f0e90cc32c2" target="_blank" rel="noopener">Hexo-NexT配置超炫网页效果</a>。</p>
-<p>另外找到的一个比较满意的主题是<a href="https://github.com/haojen/hexo-theme-Anisina" target="_blank" rel="noopener">Anisina</a>，<a href="http://haojen.github.io/" target="_blank" rel="noopener">DEMO</a>。</p>
-<h3 id="2-发布文章"><a href="#2-发布文章" class="headerlink" title="2. 发布文章"></a>2. 发布文章</h3><p>命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;blogname&quot; // hexo n &quot;blogname&quot;</span><br></pre></td></tr></table></figure></p>
+<h3 id="4-安装git"><a href="#4-安装git" class="headerlink" title="4. 安装git"></a>4. 安装git</h3><p>如果你的电脑没有配置过git的话，还需要安装<a href="https://gitforwindows.org/" target="_blank" rel="noopener">git</a>。安装完成后，cmd输入<figure class="highlight plain"><figcaption><span>--version```应输出版本号。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 二、配置Github</span><br><span class="line"></span><br><span class="line">### 1. 创建仓库</span><br><span class="line"></span><br><span class="line">在Github上创建一个新的仓库，仓库名字叫做：xxx.github.io（xxx是你在github上的用户名），为了直观看到这个仓库名和网址的关系，不妨在创建的时候生成一个readme。</span><br><span class="line">![avatar](images/construct_2.jpg)</span><br><span class="line">创建完成后，进入新建的仓库的Settings-GitHub Pages，可以看到提示</span><br><span class="line"></span><br><span class="line">    Your site is published at https://xxx.github.io</span><br><span class="line"></span><br><span class="line">自此，xxx.github.io就是博客的地址了。如果不用xxx.github.io作为仓库名字的话，它生成的地址会变成 xxx.github.io/blablabla ，徒增繁琐。</span><br><span class="line">![avatar](images/construct_3.jpg)</span><br><span class="line">### 2. 生成SSH</span><br><span class="line">打开cmd/git bash，输入：</span><br></pre></td></tr></table></figure></p>
+<p>git config –global user.name “yourname”<br>git config –global user.email “youremail”<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这里的yourname输入你的GitHub用户名，youremail输入你GitHub的邮箱。这样GitHub才能知道你是不是对应它的账户。然后创建SSH：</span><br></pre></td></tr></table></figure></p>
+<p>ssh-keygen -t rsa -C “youremail”<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">在命令行中会提示.ssh生成的位置，找到这个文件夹（Windows下一般为C:\Users\你的用户名），打开文件夹下的id_rsa.pub文件，全选，复制。</span><br><span class="line"></span><br><span class="line">    ssh，简单来讲，就是一个秘钥，其中，id_rsa是你这台电脑的私人秘钥，不能给别人看的，id_rsa.pub是公共秘钥，可以随便给别人看。把这个公钥放在GitHub上，这样当你链接GitHub自己的账户时，它就会根据公钥匹配你的私钥，当能够相互匹配时，才能够顺利的通过git上传你的文件到GitHub上。</span><br><span class="line"></span><br><span class="line">然后在Github的Setting里找到SSH and GPG keys，点击```New SSH key```，把复制到的id_rsa.pub文件内容粘贴进去。在cmd/git bash中，输入```ssh -T git@github.com```查看是否成功。</span><br><span class="line"></span><br><span class="line">### 3. Hexo -&gt; Github</span><br><span class="line">首先配置_config.yml，修改deploy项：</span><br></pre></td></tr></table></figure></p>
+<p>deploy:<br>  type: git<br>  repo: <a href="https://github.com/你的Github用户名/你的Github用户名.github.io.git" target="_blank" rel="noopener">https://github.com/你的Github用户名/你的Github用户名.github.io.git</a><br>  branch: master<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">然后安装部署命令：</span><br></pre></td></tr></table></figure></p>
+<p>npm install hexo-deployer-git –save<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">把本地的Hexo部署到Github上：</span><br></pre></td></tr></table></figure></p>
+<p>hexo clean<br>hexo generate<br>hexo deploy<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">部署完成后，访问https://你的Github用户名.github.io 就可以看到你的博客了！</span><br><span class="line"></span><br><span class="line">## 三、Hexo相关</span><br><span class="line"></span><br><span class="line">### 1. Hexo主题</span><br><span class="line">官方的主题网址为[https://hexo.io/themes/](https://hexo.io/themes/)。</span><br><span class="line"></span><br><span class="line">找了一个多小时，最后还是选择了用的人最多、看起来简洁酷炫的[NexT](https://github.com/theme-next/hexo-theme-next)，[DEMO](https://theme-next.org/)。这里有一个超赞的NexT的配置博客：[Hexo-NexT配置超炫网页效果](https://www.jianshu.com/p/9f0e90cc32c2)。</span><br><span class="line"></span><br><span class="line">另外找到的一个比较满意的主题是[Anisina](https://github.com/haojen/hexo-theme-Anisina)，[DEMO](http://haojen.github.io/)。</span><br><span class="line"></span><br><span class="line">### 2. 发布文章</span><br><span class="line">命令：```hexo new &quot;blogname&quot;</span><br></pre></td></tr></table></figure></p>
 <p>这条命令会在source/_posts下面生成一个新的blogname.md模板，可以在里面编辑文章。<br>编辑完成后，输入下面两条指令发布文章。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure></p>
-<h3 id="3-插入图片"><a href="#3-插入图片" class="headerlink" title="3. 插入图片"></a>3. 插入图片</h3><ol>
-<li>把hexo目录下的_config.yml里的post_asset_folder:设为true</li>
-<li><p>安装插件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-asset-image --save</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>运行hexo n “博客名”来生成md博客时，会在_post目录下看到一个与博客同名的文件夹。</p>
-</li>
-<li>将想要上传的图片先扔到文件夹下，然后在博客中使用markdown的格式引入图片。xxx是文件夹的名字。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![你想要输入的文字](xxxx/图片名.jpg)</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
+<h3 id="3-待续"><a href="#3-待续" class="headerlink" title="3. 待续"></a>3. 待续</h3><p>碰到什么问题会在后面继续更新，敬请期待~</p>
 
       
     </div>
@@ -521,8 +496,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/01/construct/construct/" rel="next" title="使用Hexo搭建Github博客">
-                <i class="fa fa-chevron-left"></i> 使用Hexo搭建Github博客
+              <a href="/2019/04/01/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
               </a>
             
           </div>
@@ -530,6 +505,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/01/construct/" rel="prev" title="使用Hexo搭建Github博客">
+                使用Hexo搭建Github博客 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -688,7 +667,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、配置本地环境"><span class="nav-number">1.</span> <span class="nav-text">一、配置本地环境</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-安装Node-js"><span class="nav-number">1.1.</span> <span class="nav-text">1. 安装Node.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-安装Hexo"><span class="nav-number">1.2.</span> <span class="nav-text">2. 安装Hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-搭建博客"><span class="nav-number">1.3.</span> <span class="nav-text">3. 搭建博客</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-安装git"><span class="nav-number">1.4.</span> <span class="nav-text">4. 安装git</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、配置Github"><span class="nav-number">2.</span> <span class="nav-text">二、配置Github</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-创建仓库"><span class="nav-number">2.1.</span> <span class="nav-text">1. 创建仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-生成SSH"><span class="nav-number">2.2.</span> <span class="nav-text">2. 生成SSH</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Hexo-gt-Github"><span class="nav-number">2.3.</span> <span class="nav-text">3. Hexo -&gt; Github</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、Hexo相关"><span class="nav-number">3.</span> <span class="nav-text">三、Hexo相关</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Hexo主题"><span class="nav-number">3.1.</span> <span class="nav-text">1. Hexo主题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-发布文章"><span class="nav-number">3.2.</span> <span class="nav-text">2. 发布文章</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-插入图片"><span class="nav-number">3.3.</span> <span class="nav-text">3. 插入图片</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、配置本地环境"><span class="nav-number">1.</span> <span class="nav-text">一、配置本地环境</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-安装Node-js"><span class="nav-number">1.1.</span> <span class="nav-text">1. 安装Node.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-安装Hexo"><span class="nav-number">1.2.</span> <span class="nav-text">2. 安装Hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-搭建博客"><span class="nav-number">1.3.</span> <span class="nav-text">3. 搭建博客</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-安装git"><span class="nav-number">1.4.</span> <span class="nav-text">4. 安装git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-待续"><span class="nav-number">1.5.</span> <span class="nav-text">3. 待续</span></a></li></ol></li></ol></div>
             
 
           </div>
