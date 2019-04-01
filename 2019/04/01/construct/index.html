@@ -107,7 +107,7 @@
 <meta property="og:image" content="https://berniel.github.io/2019/04/01/construct/construct_1.jpg">
 <meta property="og:image" content="https://berniel.github.io/2019/04/01/construct/construct_2.jpg">
 <meta property="og:image" content="https://berniel.github.io/2019/04/01/construct/construct_3.jpg">
-<meta property="og:updated_time" content="2019-04-01T07:34:10.419Z">
+<meta property="og:updated_time" content="2019-04-01T07:37:11.569Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用Hexo搭建Github博客">
 <meta name="twitter:description" content="博客搭建完辣！来分享一下搭建过程~环境：Win10">
@@ -394,7 +394,7 @@
                 
               
 
-              <time title="创建时间：2019-04-01 12:56:31 / 修改时间：15:34:10" itemprop="dateCreated datePublished" datetime="2019-04-01T12:56:31+08:00">2019-04-01</time>
+              <time title="创建时间：2019-04-01 12:56:31 / 修改时间：15:37:11" itemprop="dateCreated datePublished" datetime="2019-04-01T12:56:31+08:00">2019-04-01</time>
             
 
             
@@ -464,8 +464,7 @@
 <p>这里的yourname输入你的GitHub用户名，youremail输入你GitHub的邮箱。这样GitHub才能知道你是不是对应它的账户。然后创建SSH：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;youremail&quot;</span><br></pre></td></tr></table></figure></p>
 <p>在命令行中会提示.ssh生成的位置，找到这个文件夹（Windows下一般为C:\Users\你的用户名），打开文件夹下的id_rsa.pub文件，全选，复制。</p>
 <pre><code>ssh，简单来讲，就是一个秘钥，其中，id_rsa是你这台电脑的私人秘钥，不能给别人看的，id_rsa.pub是公共秘钥，可以随便给别人看。把这个公钥放在GitHub上，这样当你链接GitHub自己的账户时，它就会根据公钥匹配你的私钥，当能够相互匹配时，才能够顺利的通过git上传你的文件到GitHub上。
-</code></pre><p>然后在Github的Setting里找到SSH and GPG keys，点击<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">New SSH key</span><br></pre></td></tr></table></figure></p>
-<p>把复制到的id_rsa.pub文件内容粘贴进去。在cmd/git bash中，输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure></p>
+</code></pre><p>然后在Github的Setting里找到SSH and GPG keys，点击New SSH key把复制到的id_rsa.pub文件内容粘贴进去。在cmd/git bash中，输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure></p>
 <p>查看是否成功。</p>
 <h3 id="3-Hexo-gt-Github"><a href="#3-Hexo-gt-Github" class="headerlink" title="3. Hexo -&gt; Github"></a>3. Hexo -&gt; Github</h3><p>首先配置_config.yml，修改deploy项：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://github.com/你的Github用户名/你的Github用户名.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure></p>
 <p>然后安装部署命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></p>
@@ -522,8 +521,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/01/construct/construct/" rel="next" title="使用Hexo搭建Github博客">
-                <i class="fa fa-chevron-left"></i> 使用Hexo搭建Github博客
+              <a href="/2019/04/01/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
               </a>
             
           </div>
@@ -601,7 +600,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-count">2</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
