@@ -909,7 +909,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-03 12:38:49" itemprop="dateModified" datetime="2019-04-03T12:38:49+08:00">2019-04-03</time>
+                <time title="修改时间：2019-04-03 13:05:49" itemprop="dateModified" datetime="2019-04-03T13:05:49+08:00">2019-04-03</time>
               
             
           </span>
@@ -962,57 +962,16 @@
 
       
         
+          <p>首先放上一个链接：<a href="http://www.cnblogs.com/Michelle-Yang/p/6730818.html" target="_blank" rel="noopener">如何使用python将二维数组去重呢?</a> 其中提到了两种方案：<br></p>
+          <!--noindex-->
           
-            <p>首先放上一个链接：<a href="http://www.cnblogs.com/Michelle-Yang/p/6730818.html" target="_blank" rel="noopener">如何使用python将二维数组去重呢?</a> 其中提到了两种方案：</p>
-<p>#方案1:转化为虚数<br>x=c[:,0]+c[:,1]*1j<br>print(‘转化为虚数:’,x)<br>print(‘虚数去重后:’,np.unique(x))<br>print(np.unique(x,return_index=True))#return_index:输出的元素索引值<br>idx=np.unique(x,return_index=True)[1]<br>print(‘二维数组去重:\n’,c[idx])</p>
-<p>#方案2:利用set<br>print(‘去重方案2:\n’,np.array(list(set([tuple(t) for t in c]))))</p>
-<p>但是思前想后，感觉这么简单常用的功能不至于这么麻烦。于是我又把np.unique()这个函数看了一遍，发现np.unique()是可以直接解决的。PS:吐槽一下，第二种方案是真的慢。 直接上代码：</p>
-<p>import numpy as np<br>a = np.array([[1,2,3,4],[5,6,7,8],[9,10,11,12],[1,2,3,4]])<br>print ‘a:’<br>print a<br>print ‘unique:’<br>print np.unique(a, axis=0)</p>
-<p>输出：</p>
-<p>a:<br>[[ 1  2  3  4]<br> [ 5  6  7  8]<br> [ 9 10 11 12]<br> [ 1  2  3  4]]<br>unique:<br>[[ 1  2  3  4]<br> [ 5  6  7  8]<br> [ 9 10 11 12]]</p>
-<p>我们可以看到，np.unique()并不是简单地只有np.unique(a)这么一种调用形式。附上<a href="https://docs.scipy.org/doc/numpy-1.14.0/reference/generated/numpy.unique.html" target="_blank" rel="noopener">np.unique()的文档</a>：</p>
-<h1 id="numpy-unique"><a href="#numpy-unique" class="headerlink" title="numpy.unique"></a>numpy.unique</h1><p><code>numpy.`</code>unique`(_ar_, _return_index=False_, _return_inverse=False_, _return_counts=False_, <em>axis=None</em>)<a href="http://github.com/numpy/numpy/blob/v1.14.0/numpy/lib/arraysetops.py#L113-L248" target="_blank" rel="noopener">[source]</a></p>
-<p>Find the unique elements of an array. Returns the sorted unique elements of an array. There are three optional outputs in addition to the unique elements: the indices of the input array that give the unique values, the indices of the unique array that reconstruct the input array, and the number of times each unique value comes up in the input array.</p>
-<p>Parameters:</p>
-<p><strong>ar</strong> : array_like</p>
-<blockquote>
-<p>Input array. Unless <em>axis</em> is specified, this will be flattened if it is not already 1-D.</p>
-</blockquote>
-<p><strong>return_index</strong> : bool, optional</p>
-<blockquote>
-<p>If True, also return the indices of _ar_ (along the specified axis, if provided, or in the flattened array) that result in the unique array.</p>
-</blockquote>
-<p><strong>return_inverse</strong> : bool, optional</p>
-<blockquote>
-<p>If True, also return the indices of the unique array (for the specified axis, if provided) that can be used to reconstruct _ar_.</p>
-</blockquote>
-<p><strong>return_counts</strong> : bool, optional</p>
-<blockquote>
-<p>If True, also return the number of times each unique item appears in _ar_. .. versionadded:: 1.9.0</p>
-</blockquote>
-<p><strong>axis</strong> : int or None, optional</p>
-<blockquote>
-<p>The axis to operate on. If None, _ar_ will be flattened beforehand. Otherwise, duplicate items will be removed along the provided axis, with all the other axes belonging to the each of the unique elements. Object arrays or structured arrays that contain objects are not supported if the <em>axis</em> kwarg is used. .. versionadded:: 1.13.0</p>
-</blockquote>
-<p>Returns:</p>
-<p><strong>unique</strong> : ndarray</p>
-<blockquote>
-<p>The sorted unique values.</p>
-</blockquote>
-<p><strong>unique_indices</strong> : ndarray, optional</p>
-<blockquote>
-<p>The indices of the first occurrences of the unique values in the original array. Only provided if _return_index_ is True.</p>
-</blockquote>
-<p><strong>unique_inverse</strong> : ndarray, optional</p>
-<blockquote>
-<p>The indices to reconstruct the original array from the unique array. Only provided if _return_inverse_ is True.</p>
-</blockquote>
-<p><strong>unique_counts</strong> : ndarray, optional</p>
-<blockquote>
-<p>The number of times each of the unique values comes up in the original array. Only provided if _return_counts_ is True. .. versionadded:: 1.9.0</p>
-</blockquote>
-
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/05/07/np-unique/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
           
+          <!--/noindex-->
         
       
     </div>
@@ -1129,7 +1088,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-03 12:39:05" itemprop="dateModified" datetime="2019-04-03T12:39:05+08:00">2019-04-03</time>
+                <time title="修改时间：2019-04-03 13:06:03" itemprop="dateModified" datetime="2019-04-03T13:06:03+08:00">2019-04-03</time>
               
             
           </span>
@@ -1182,67 +1141,16 @@
 
       
         
+          <p>本篇简单介绍强化学习的概念和定义，主要学习自资料<a href="https://www.bilibili.com/video/av9831889" target="_blank" rel="noopener">David Silver的强化学习教程（b站有字幕版本）</a>和<a href="https://morvanzhou.github.io/tutorials/machine-learning/reinforcement-learning/" target="_blank" rel="noopener">莫凡Python</a>。其他的RL学习笔记对于逻辑的梳理和概念理解上也给了很多的参考和指导，感谢！博主小白一只，有任何理解不当之处请不吝赐教，谢谢！图片来源均标于图片，侵删。<br></p>
+          <!--noindex-->
           
-            <p>本篇简单介绍强化学习的概念和定义，主要学习自资料<a href="https://www.bilibili.com/video/av9831889" target="_blank" rel="noopener">David Silver的强化学习教程（b站有字幕版本）</a>和<a href="https://morvanzhou.github.io/tutorials/machine-learning/reinforcement-learning/" target="_blank" rel="noopener">莫凡Python</a>。其他的RL学习笔记对于逻辑的梳理和概念理解上也给了很多的参考和指导，感谢！博主小白一只，有任何理解不当之处请不吝赐教，谢谢！图片来源均标于图片下方，侵删。 </p>
-<h2 id="一、什么是强化学习"><a href="#一、什么是强化学习" class="headerlink" title="一、什么是强化学习"></a>一、什么是强化学习</h2><p><img src="/2018/04/23/rlnotes/图片1-300x267.png" alt="图源：David Silver RL课程" title="图源：David Silver RL课程"><br>强化学习在计算机领域可以算作机器学习大家族中的一个大类。它和有监督学习、无监督学习的关系可以从上面这个图看出。最大的圆圈范围是机器学习，在机器学习范围中分别可以划分为有监督学习、无监督学习和强化学习等。 强化学习和其他机器学习方法相比，主要有四个特点。</p>
-<p><strong>1）学习机制Reward Signal</strong>。第一个特点是它的学习机制。我们把强化学习的Agent当成一个机器人看，这个机器人同样也需要一定的指导来判断行为的正确性。但是这个指导并不是直接告诉机器人每一步该怎么做，而是让机器人自己去选择自己的每一种行为，在一系列行为产生结果后对这个行为打分。在每次得到得分后，机器人在下次决策时会尽量避免低分的行为，而去选择高分的行为。这个分数就是强化学习中的奖励信号。</p>
-<p><img src="/2018/04/23/rlnotes/图片2-300x167.png" alt="图源：莫凡Python-Reinforcement Learning" title="图源：莫凡Python-Reinforcement Learning"> </p>
-<p><strong>2) 反馈的延时性</strong>。另一个特点是延时性。强化学习中没有监督学习中的标记样本，没有人告诉机器在什么状态下该做什么动作。只有等到最终结果揭晓。才能通过反思之前的动作是否正确来进行学习。</p>
-<p><img src="/2018/04/23/rlnotes/图片3-300x170.png" alt="图源：莫凡Python-Reinforcement Learning" title="图源：莫凡Python-Reinforcement Learning"></p>
-<p>拿上面这个图来说，设想这样的情况，学校放假时，家长不在家，学校留了一堆作业。我们第一步处于s1状态，比如说8点，在纠结接下来我们到底是看电视还是写作业。假如我们随机选择了看电视这个行为，但是当做出这个决策时，我们并不知道这个行为会产生什么后果。只有当我们一步一步地把决定做下去，比如说像图像上这样在9点、10点都选择看电视，结果被回到家的爸爸看到打了一顿。经过了这么多步，我们才获得了一个负反馈。这就是强化学习的反馈的延时性。</p>
-<p><strong>3) 时序性</strong>。第三个特点是时序性。强化学习不像有监督学习，数据是独立同分布的，我们把样本和标签送进去学习就可以。强化学习的数据是一系列有序的数据。拿刚才这个图来说，小孩子选择看电视后，在下一个时间段又面临着写作业还是看电视的选择，也就是说，机器人每做一个选择，都会进入到一个状态，在这个状态中又进行新的行为选择。</p>
-<p><strong>4) 机器人的行为会影响到它接下来接收到的数据和反馈等</strong>。</p>
-<p>接下来我们可以看几个例子。 第一个是莫凡Python的强化学习中用Q-Learning写的走迷宫的程序，程序非常简单，但我觉得这个对强化学习的理解比较清楚，所以把这个当成一个例子来给大家看一下。在这个程序里，黑色的块代表地狱（Reward=-1），黄色的块代表天堂（Reward=1）。一开始机器人并不知道怎么走，于是随机选择的自己的路径，到后面碰到黑块的次数就越来越少，直到找到出口以后，往出口走的步数就越来越少，表示这个机器人在这件事上已经越来越熟练了。</p>
-<video id="video" controls preload="none"><br><source id="mp4" src="https://morvanzhou.github.io/static/results/reinforcement-learning/maze%20q.mp4" type="video/mp4"><br></video>
-
-<p>另外的例子有:</p>
-<p>1） 自动驾驶直升机模型，对于直升机在每个地点、每种动作的不同状态，直升机需要不断地尝试。在直升机跑出满意的轨迹时给一定的正反馈。直升机坠毁时给负反馈。</p>
-<p>2） 控制机器人行走，机器人在这里和机器人在那里是两种不同的状态，对于这些状态下的动作也有不同的要求。</p>
-<p>3） 对于一定资金下如何进行投资，Agent需要不停地处理每一段时间的数据流，学习在某个时间段内应该投资哪些产品。</p>
-<p>4） 下围棋，每次落子后导致的棋局的不停变化也需要让机器人产生新的动作，最后以棋局的胜负作为奖励的标准。</p>
-<p>5） 等等等等等……</p>
-<h2 id="二、强化学习问题"><a href="#二、强化学习问题" class="headerlink" title="二、强化学习问题"></a>二、强化学习问题</h2><p>了解了强化学习的基本概念以后，我们细致一些地看一下强化学习问题。强化学习问题其实是一种序列决策（Sequential Decision Making），它可以用环境（Environment）、个体（Agent）来描述。 </p>
-<h3 id="序列决策问题"><a href="#序列决策问题" class="headerlink" title="序列决策问题"></a>序列决策问题</h3><p><strong>序列决策</strong>：通过与环境的交互，进行多次决策后，选择合适的动作，最大化来自将来的奖励。</p>
-<p><strong>奖励（Reward）</strong>：奖励Rt是一个标量反馈信号，反映了智能体在某个时刻行为的好坏。</p>
-<p><strong>奖励假说（Reward Hypothesis）</strong>：所有目标都可以表示为最大化期望累计回报。</p>
-<p><em>——强化学习是建立在该假说上的</em></p>
-<p><img src="/2018/04/23/rlnotes/图片4-295x300.png" alt="图源：David Silver RL课程" title="图源：David Silver RL课程"></p>
-<h3 id="个体与环境"><a href="#个体与环境" class="headerlink" title="个体与环境"></a>个体与环境</h3><p>我们可以从个体和环境两方面来描述强化学习问题。</p>
-<p><strong>个体</strong>：我们用图中这个大脑来表示一个个体。这个个体可以做出一定的行动，比如说写作业、做投资、机器人走路等等。而采取的每一步行动都取决于他所获得的信息。每采取一次行动，agent都会获得关于环境的新的信息。就像机器人走路，一边走一边拿相机给周围拍照，来判断有哪些不一样。同时，这个个体可能会获得奖励信号，来判断采取的行动的好坏。所有的agent都有两个输入，一个是观察到的环境信息，另一个是奖励信号，这些输入决定了下一步采取的措施。我们最后的目的就是看一下这个大脑中到底学习到了什么样的算法。</p>
-<p><strong>环境</strong>：描述强化学习问题的另外一部分是环境，我们用这个地球来表示外部环境。我们可以把个体和环境之间不断地交互看做一个循环，个体采取行动之后，新的环境就生成了。这个新的环境又产生了新的观察信号和奖励信号。</p>
-<p>个体和环境不断地进行交互，不断地试错，最后我们发现强化学习是基于观察、奖励和行动的一个<strong>时间序列</strong>，这个时间序列就代表着个体的经验，也就是我们需要的东西。</p>
-<h3 id="历史与状态"><a href="#历史与状态" class="headerlink" title="历史与状态"></a>历史与状态</h3><p><strong>历史（History）与状态（State）</strong>：个体用来学习的参考经验。我们刚才说的时间序列或者说经验可以称作一段历史，个体下一步的行为和环境提供的奖励、观察可以说是根据历史来决定的。比如说走迷宫时，发现在哪里撞过墙，接下来可能就不去再撞墙。</p>
-<p><strong>历史</strong>：观察、行动与奖励的序列。Ht = O1, R1, A1, …, At-1, Ot, Rt</p>
-<p>但是有一个问题，当历史特别复杂时，去回顾一遍历史可能要花费大量的时间。比如说这个历史是一段视频，我们不可能每一次做决策都要重头看一遍从一开始到现在录下来的视频。</p>
-<p>所以，我们需要一个概念来总结历史。这个概念可以称作状态。</p>
-<p><strong>状态</strong>：决定了接下来会发生什么的一段信息。状态可以形式化地定义成一个关于历史的函数，这个函数可能是任意的函数。St = f(Ht)</p>
-<p><strong>三种状态</strong>：环境状态（Environment State），个体状态（Agent State），信息状态（Markov State）。</p>
-<p><strong>环境状态</strong>：字面意思，环境的状态，决定了环境接下来会发生什么，提供什么样的观测值和奖励值。通常对个体不完全可见，即使对个体完全可见，提供的信息也有可能包括很多无关信息。环境状态对个体创建算法没有什么帮助，只是一个客观的环境信息。而如何让个体创建算法，更主要的是个体状态。</p>
-<p><strong>个体状态</strong>：个体内部的一种呈现，包括个体可以使用的、决定未来动作的所有信息。就像上一幅中的大脑，能够总结每一个状态中发生了什么，并选择合适的动作。它总结出用来选择动作的信息就叫做个体的状态。</p>
-<p><img src="/2018/04/23/rlnotes/图片5-300x121.png" alt="图源：David Silver RL课程" title="图源：David Silver RL课程"> </p>
-<p>个体状态的选择对于学习的结果有很大的影响。拿上面这个例子来说，这只小老鼠总共参与了三组动作序列。第一组动作序列是灯泡、灯泡、开关和铃铛，这时它遭到了电击。第二组序列是铃铛、灯泡、开关、开关，结果是一块香甜的奶酪。那么问题是，经过图像上这个第三组动作序列，它最终会得到什么？</p>
-<p>我们可以看到，如果它的个体状态选择是之前的三个动作的话，那么它得到的会是电击。而如果它的个体状态是灯、开关和铃铛的数量的话，它得到的很有可能是奶酪。但是如果考虑完整的历史序列来看的话，得到的结果就是不确定的。</p>
-<p><img src="/2018/04/23/rlnotes/图片6-300x69.png" alt="图源：David Silver RL课程" title="图源：David Silver RL课程"></p>
-<p><strong>信息状态</strong>：历史上所有有用的信息，又称Markov状态。可以根据下面这个公式判断一个状态是否Markov。这个公式的意思是说，一个马尔科夫的状态，如果St的状态是可知的，那么所有的历史都可以丢掉，只看St的状态就可以了，也就是说，如果给定了现在的状态，那么未来对于过去的状态来说是独立的。</p>
-<p>而由具有Markov性质的状态所组成的时间序列就叫<strong>马尔科夫过程（Markov Process）</strong>，也就是我们说的马尔科夫链。再加上每个状态需要执行的操作（决策），整个过程就是<strong>马尔科夫决策过程</strong>（Markov Decision Process，简称MDP）。可以认为现在的强化学习的多数情况都是在建立在MDP的思想上的。MDP过程是强化学习的理论基础，具体的内容理论性比较强，下次再说。</p>
-<h3 id="小总结"><a href="#小总结" class="headerlink" title="小总结"></a>小总结</h3><p>刚才我们对强化学习问题做了一个比较详细的描述。我们分别分析了强化学习的目标就是最大化累计奖励，分析了个体和环境是如何交互的，他们交互产生的时间序列叫做历史，由历史总结而来的用来决策的信息叫做状态，并且我们简单地了解了马尔科夫决策过程，这个是大部分强化学习问题的理论基础。至于为什么说是大部分强化学习问题而不是全部的强化学习问题，是因为不是所有的强化学习中的状态都是马尔科夫的，马尔科夫性质建立在个体能否完全观测到所需要的环境信息的基础上，除此之外还有一种叫做部分可观测的马尔科夫决策过程POMDP。这部分内容下次再说（偷懒） 那么，我们对强化学习介绍了大致的概念和详细的描述，最后的事情就是如何去解决强化学习问题，也就是说，图中的这个大脑是如何根据环境提供的奖励和观察信息进行决策的？ </p>
-<h2 id="三、个体"><a href="#三、个体" class="headerlink" title="三、个体"></a>三、个体</h2><p>我们回头来看Agent。不同的Agent有不一样的组成，导致了Agent的分类（即个体决策所采用的方法）不同，因此有了Q-Learning，Sarsa，Policy Gradients等一系列方法。 <strong>Agent的组成</strong>：Agent的组成有策略（Policy）、值函数（Value Function）和模型（Model）三部分。</p>
-<h3 id="策略"><a href="#策略" class="headerlink" title="策略"></a>策略</h3><p>策略定义了agent的行为方式，是从状态到行为的一个映射，策略可以是一个简单的函数，对于每一种状态都有一种确定的决策，如<img src="/2018/04/23/rlnotes/图片8.png" alt></p>
-<p>也可以是一个查询表或者是根据概率取值，对于每一种状态，给出某种决策的概率，如</p>
-<p><img src="/2018/04/23/rlnotes/图片9-300x38.png" alt></p>
-<p><em>值函数：</em>值函数是一个对未来奖励的预测，用来评价当前状态的好坏程度。比如，当Agent面临状态1和状态2（对应动作1和动作2）时，会选择奖励最大的，而值函数就是用来预测这个奖励的。</p>
-<p><img src="/2018/04/23/rlnotes/图片7-300x24.png" alt></p>
-<p>上面这个公式是值函数的数学形式，可以看出它是在当前状态下对未来获得的奖励的预测。里面的伽马叫做折扣因子，表示越远的step获得的reward越不重要。</p>
-<h3 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h3><p>模型用于预测环境变化，以此来确定下一步我们的行动应该是什么。模型对环境的动态特性(Dynamics)进行建模，判断某一个状态将会产生什么样的下次状态、对应的动作以及获得的奖励。具体而言，有两个组成部分，一个是预测下一个状态的概率 ，另一个是预测下一次的奖励的期望。</p>
-<p>对于一个个体而言，模型不是必须的。有一些算法，比如Q-Learning，Sarsa和Policy Gradients都不依靠模型。模型只是对环境建模，有没有模型对应我们的策略和值函数的评估方法会不一样。</p>
-<p>对没有模型的算法而言，Agent只能按部就班，一步一步等待真实世界的反馈，再根据反馈采取下一步行动。而有模型的算法能通过想象来预判断接下来将要发生的所有情况，然后选择这些想象情况中最好的那种，并依据这种情况来采取下一步的策略，比如AlphaGo采用的就是一种有模型的强化学习算法。</p>
-<p><img src="/2018/04/23/rlnotes/图片10-300x209.png" alt="图源：David Silver RL课程" title="图源：David Silver RL课程"> </p>
-<h3 id="Agent的分类"><a href="#Agent的分类" class="headerlink" title="Agent的分类"></a>Agent的分类</h3><p>按照Agent组成的不同，Agent可以分为几类。上面这张图可以比较完整地表示出Agent的分类情况。</p>
-<p>比如说根据有没有Value Function而言，可以分为基于Value Function的方法和基于Policy的方法。基于Value Function的方法通过value function来计算policy，此时policy是隐含的，不需要直接定义，只需要取最大的value就可以了。这类方法有非常典型的Q-Learning和Sarsa等。另一种基于Policy的方法是Agent的组成中没有Value Function的情况。一般这种方法中，是直接由state得到动作或者得到某种动作的概率。 除此之外，有一个比较特殊的方法叫做演员评论家（Actor Critic）算法，这个方法结合了值函数和策略，其中Actor就表示的策略，而Critic表示的值函数。这个算法在使用Policy的同时也会保留每次得到的value function，在Policy Gradients的基础上能够有效加速学习过程。 </p>
-<p>另外一种分类方式是有模型和没有模型的Agent分类。这个我们刚才说过了，区别在于Agent是否会注意环境的变化，对环境情况进行预测。 </p>
-<p>参考资料： 1. <a href="https://morvanzhou.github.io/tutorials/machine-learning/reinforcement-learning/" target="_blank" rel="noopener">莫凡Python-强化学习 Reinforcement Learning</a> 2. <a href="https://www.bilibili.com/video/av9831889" target="_blank" rel="noopener">David Silver深度强化学习</a> 3. <a href="https://zhuanlan.zhihu.com/reinforce" target="_blank" rel="noopener">David Silver强化学习公开课中文讲解及实践</a> 4. <a href="https://chenrudan.github.io/blog/2016/06/06/reinforcementlearninglesssion1.html" target="_blank" rel="noopener">【David Silver强化学习公开课之一】强化学习入门</a> 5.  <a href="https://blog.csdn.net/u013745804/article/details/78196834" target="_blank" rel="noopener">David Silver强化学习课程笔记（一）</a></p>
-
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/04/23/rlnotes/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
           
+          <!--/noindex-->
         
       
     </div>
@@ -1359,7 +1267,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-03 12:36:58" itemprop="dateModified" datetime="2019-04-03T12:36:58+08:00">2019-04-03</time>
+                <time title="修改时间：2019-04-03 13:06:36" itemprop="dateModified" datetime="2019-04-03T13:06:36+08:00">2019-04-03</time>
               
             
           </span>
@@ -1412,11 +1320,16 @@
 
       
         
+          <p>Wordpress插件在这里：<a href="http://eric.cn.com/?p=1187" target="_blank" rel="noopener">http://eric.cn.com/?p=1187</a> 这个插件支持网易云音乐、QQ音乐、酷狗音乐、百度音乐和虾米音乐的歌单，可以在网页上生成一个播放器自动播放音乐。我用的是网易云音乐的歌单，只需要把自己的网易云音乐ID放上去就可以自动读取歌单了，好用，推荐！ <img src="/2018/04/18/add-music/TIM图片20180418154913-272x300.png" alt> 另外，如果只是插一首歌的话，在网易云音乐的音乐播放页面点击生成外链播放器，把代码复制过来就行了。<br></p>
+          <!--noindex-->
           
-            <p>Wordpress插件在这里：<a href="http://eric.cn.com/?p=1187" target="_blank" rel="noopener">http://eric.cn.com/?p=1187</a> 这个插件支持网易云音乐、QQ音乐、酷狗音乐、百度音乐和虾米音乐的歌单，可以在网页上生成一个播放器自动播放音乐。我用的是网易云音乐的歌单，只需要把自己的网易云音乐ID放上去就可以自动读取歌单了，好用，推荐！ <img src="http://berniel.top/wp-content/uploads/2018/04/TIM图片20180418154913-272x300.png" alt> 另外，如果只是插一首歌的话，在网易云音乐的音乐播放页面点击生成外链播放器，把代码复制过来就行了。</p>
-<p><span data-mce-type="bookmark" style="display: inline-block; width: 0px; overflow: hidden; line-height: 0;" class="mce\_SELRES\_start">﻿</span></p>
-
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/04/18/add-music/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
           
+          <!--/noindex-->
         
       
     </div>
@@ -1525,14 +1438,6 @@
                     
                       
                     
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
                     <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
@@ -1549,18 +1454,6 @@
                     
                   
                     
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
                     
                       
                     

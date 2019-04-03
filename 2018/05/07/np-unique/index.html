@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="首先放上一个链接：如何使用python将二维数组去重呢? 其中提到了两种方案： #方案1:转化为虚数x=c[:,0]+c[:,1]*1jprint(‘转化为虚数:’,x)print(‘虚数去重后:’,np.unique(x))print(np.unique(x,return_index=True))#return_index:输出的元素索引值idx=np.unique(x,return_index">
+  <meta name="description" content="首先放上一个链接：如何使用python将二维数组去重呢? 其中提到了两种方案：">
 <meta name="keywords" content="numpy,二维数组去重">
 <meta property="og:type" content="article">
 <meta property="og:title" content="numpy对二维数组去重（附np.unique()文档）">
 <meta property="og:url" content="https://berniel.github.io/2018/05/07/np-unique/index.html">
 <meta property="og:site_name" content="Bernie Liang&#39;s Blog">
-<meta property="og:description" content="首先放上一个链接：如何使用python将二维数组去重呢? 其中提到了两种方案： #方案1:转化为虚数x=c[:,0]+c[:,1]*1jprint(‘转化为虚数:’,x)print(‘虚数去重后:’,np.unique(x))print(np.unique(x,return_index=True))#return_index:输出的元素索引值idx=np.unique(x,return_index">
+<meta property="og:description" content="首先放上一个链接：如何使用python将二维数组去重呢? 其中提到了两种方案：">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-03T04:38:49.070Z">
+<meta property="og:updated_time" content="2019-04-03T05:05:49.183Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="numpy对二维数组去重（附np.unique()文档）">
-<meta name="twitter:description" content="首先放上一个链接：如何使用python将二维数组去重呢? 其中提到了两种方案： #方案1:转化为虚数x=c[:,0]+c[:,1]*1jprint(‘转化为虚数:’,x)print(‘虚数去重后:’,np.unique(x))print(np.unique(x,return_index=True))#return_index:输出的元素索引值idx=np.unique(x,return_index">
+<meta name="twitter:description" content="首先放上一个链接：如何使用python将二维数组去重呢? 其中提到了两种方案：">
 
 
 
@@ -407,7 +407,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-03 12:38:49" itemprop="dateModified" datetime="2019-04-03T12:38:49+08:00">2019-04-03</time>
+                <time title="修改时间：2019-04-03 13:05:49" itemprop="dateModified" datetime="2019-04-03T13:05:49+08:00">2019-04-03</time>
               
             
           </span>
@@ -459,7 +459,7 @@
       
 
       
-        <p>首先放上一个链接：<a href="http://www.cnblogs.com/Michelle-Yang/p/6730818.html" target="_blank" rel="noopener">如何使用python将二维数组去重呢?</a> 其中提到了两种方案：</p>
+        <p>首先放上一个链接：<a href="http://www.cnblogs.com/Michelle-Yang/p/6730818.html" target="_blank" rel="noopener">如何使用python将二维数组去重呢?</a> 其中提到了两种方案：<br><a id="more"></a></p>
 <p>#方案1:转化为虚数<br>x=c[:,0]+c[:,1]*1j<br>print(‘转化为虚数:’,x)<br>print(‘虚数去重后:’,np.unique(x))<br>print(np.unique(x,return_index=True))#return_index:输出的元素索引值<br>idx=np.unique(x,return_index=True)[1]<br>print(‘二维数组去重:\n’,c[idx])</p>
 <p>#方案2:利用set<br>print(‘去重方案2:\n’,np.array(list(set([tuple(t) for t in c]))))</p>
 <p>但是思前想后，感觉这么简单常用的功能不至于这么麻烦。于是我又把np.unique()这个函数看了一遍，发现np.unique()是可以直接解决的。PS:吐槽一下，第二种方案是真的慢。 直接上代码：</p>
@@ -653,14 +653,6 @@
                     
                       
                     
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
                     <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
@@ -677,18 +669,6 @@
                     
                   
                     
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
                     
                       
                     
