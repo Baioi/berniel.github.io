@@ -96,16 +96,18 @@
 
 
 
-  <meta name="description" content="默默地放上一些学习的进度和瞎搞的东西">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Bernie Liang&#39;s Blog">
-<meta property="og:url" content="https://berniel.github.io/tags/Hexo/index.html">
+  <meta name="description" content="首先放上一个链接：如何使用python将二维数组去重呢? 其中提到了两种方案： #方案1:转化为虚数x=c[:,0]+c[:,1]*1jprint(‘转化为虚数:’,x)print(‘虚数去重后:’,np.unique(x))print(np.unique(x,return_index=True))#return_index:输出的元素索引值idx=np.unique(x,return_index">
+<meta name="keywords" content="numpy,二维数组去重">
+<meta property="og:type" content="article">
+<meta property="og:title" content="numpy对二维数组去重（附np.unique()文档）">
+<meta property="og:url" content="https://berniel.github.io/2018/05/07/np-unique/index.html">
 <meta property="og:site_name" content="Bernie Liang&#39;s Blog">
-<meta property="og:description" content="默默地放上一些学习的进度和瞎搞的东西">
+<meta property="og:description" content="首先放上一个链接：如何使用python将二维数组去重呢? 其中提到了两种方案： #方案1:转化为虚数x=c[:,0]+c[:,1]*1jprint(‘转化为虚数:’,x)print(‘虚数去重后:’,np.unique(x))print(np.unique(x,return_index=True))#return_index:输出的元素索引值idx=np.unique(x,return_index">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-04-03T04:38:49.070Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Bernie Liang&#39;s Blog">
-<meta name="twitter:description" content="默默地放上一些学习的进度和瞎搞的东西">
+<meta name="twitter:title" content="numpy对二维数组去重（附np.unique()文档）">
+<meta name="twitter:description" content="首先放上一个链接：如何使用python将二维数组去重呢? 其中提到了两种方案： #方案1:转化为虚数x=c[:,0]+c[:,1]*1jprint(‘转化为虚数:’,x)print(‘虚数去重后:’,np.unique(x))print(np.unique(x,return_index=True))#return_index:输出的元素索引值idx=np.unique(x,return_index">
 
 
 
@@ -115,7 +117,7 @@
 
   
   
-  <link rel="canonical" href="https://berniel.github.io/tags/Hexo/">
+  <link rel="canonical" href="https://berniel.github.io/2018/05/07/np-unique/">
 
 
 
@@ -125,7 +127,7 @@
   };
 </script>
 
-  <title>标签: Hexo | Bernie Liang's Blog</title>
+  <title>numpy对二维数组去重（附np.unique()文档） | Bernie Liang's Blog</title>
   
 
 
@@ -173,7 +175,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
     <a href="https://github.com/berniel" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -249,7 +251,7 @@
         
         
           
-          <li class="menu-item menu-item-tags menu-item-active">
+          <li class="menu-item menu-item-tags">
 
     
     
@@ -305,28 +307,6 @@
   
     
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
   
 
   
@@ -351,57 +331,257 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>Hexo<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://berniel.github.io/2018/05/07/np-unique/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bernie Liang">
+      <meta itemprop="description" content="默默地放上一些学习的进度和瞎搞的东西">
+      <meta itemprop="image" content="/images/photo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bernie Liang's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/2019/04/01/construct/" itemprop="url">
-            
-              <span itemprop="name">使用Hexo搭建Github博客</span>
-            
-          </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">numpy对二维数组去重（附np.unique()文档）
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-01T12:56:00+08:00" content="2019-04-01">
-          04-01
-        </time>
-      </div>
+              
+            
+          </h1>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+          <span class="post-time">
 
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-05-07 12:52:00" itemprop="dateCreated datePublished" datetime="2018-05-07T12:52:00+08:00">2018-05-07</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-03 12:38:49" itemprop="dateModified" datetime="2019-04-03T12:38:49+08:00">2019-04-03</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/numpy/" itemprop="url" rel="index"><span itemprop="name">numpy</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>首先放上一个链接：<a href="http://www.cnblogs.com/Michelle-Yang/p/6730818.html" target="_blank" rel="noopener">如何使用python将二维数组去重呢?</a> 其中提到了两种方案：</p>
+<p>#方案1:转化为虚数<br>x=c[:,0]+c[:,1]*1j<br>print(‘转化为虚数:’,x)<br>print(‘虚数去重后:’,np.unique(x))<br>print(np.unique(x,return_index=True))#return_index:输出的元素索引值<br>idx=np.unique(x,return_index=True)[1]<br>print(‘二维数组去重:\n’,c[idx])</p>
+<p>#方案2:利用set<br>print(‘去重方案2:\n’,np.array(list(set([tuple(t) for t in c]))))</p>
+<p>但是思前想后，感觉这么简单常用的功能不至于这么麻烦。于是我又把np.unique()这个函数看了一遍，发现np.unique()是可以直接解决的。PS:吐槽一下，第二种方案是真的慢。 直接上代码：</p>
+<p>import numpy as np<br>a = np.array([[1,2,3,4],[5,6,7,8],[9,10,11,12],[1,2,3,4]])<br>print ‘a:’<br>print a<br>print ‘unique:’<br>print np.unique(a, axis=0)</p>
+<p>输出：</p>
+<p>a:<br>[[ 1  2  3  4]<br> [ 5  6  7  8]<br> [ 9 10 11 12]<br> [ 1  2  3  4]]<br>unique:<br>[[ 1  2  3  4]<br> [ 5  6  7  8]<br> [ 9 10 11 12]]</p>
+<p>我们可以看到，np.unique()并不是简单地只有np.unique(a)这么一种调用形式。附上<a href="https://docs.scipy.org/doc/numpy-1.14.0/reference/generated/numpy.unique.html" target="_blank" rel="noopener">np.unique()的文档</a>：</p>
+<h1 id="numpy-unique"><a href="#numpy-unique" class="headerlink" title="numpy.unique"></a>numpy.unique</h1><p><code>numpy.`</code>unique`(_ar_, _return_index=False_, _return_inverse=False_, _return_counts=False_, <em>axis=None</em>)<a href="http://github.com/numpy/numpy/blob/v1.14.0/numpy/lib/arraysetops.py#L113-L248" target="_blank" rel="noopener">[source]</a></p>
+<p>Find the unique elements of an array. Returns the sorted unique elements of an array. There are three optional outputs in addition to the unique elements: the indices of the input array that give the unique values, the indices of the unique array that reconstruct the input array, and the number of times each unique value comes up in the input array.</p>
+<p>Parameters:</p>
+<p><strong>ar</strong> : array_like</p>
+<blockquote>
+<p>Input array. Unless <em>axis</em> is specified, this will be flattened if it is not already 1-D.</p>
+</blockquote>
+<p><strong>return_index</strong> : bool, optional</p>
+<blockquote>
+<p>If True, also return the indices of _ar_ (along the specified axis, if provided, or in the flattened array) that result in the unique array.</p>
+</blockquote>
+<p><strong>return_inverse</strong> : bool, optional</p>
+<blockquote>
+<p>If True, also return the indices of the unique array (for the specified axis, if provided) that can be used to reconstruct _ar_.</p>
+</blockquote>
+<p><strong>return_counts</strong> : bool, optional</p>
+<blockquote>
+<p>If True, also return the number of times each unique item appears in _ar_. .. versionadded:: 1.9.0</p>
+</blockquote>
+<p><strong>axis</strong> : int or None, optional</p>
+<blockquote>
+<p>The axis to operate on. If None, _ar_ will be flattened beforehand. Otherwise, duplicate items will be removed along the provided axis, with all the other axes belonging to the each of the unique elements. Object arrays or structured arrays that contain objects are not supported if the <em>axis</em> kwarg is used. .. versionadded:: 1.13.0</p>
+</blockquote>
+<p>Returns:</p>
+<p><strong>unique</strong> : ndarray</p>
+<blockquote>
+<p>The sorted unique values.</p>
+</blockquote>
+<p><strong>unique_indices</strong> : ndarray, optional</p>
+<blockquote>
+<p>The indices of the first occurrences of the unique values in the original array. Only provided if _return_index_ is True.</p>
+</blockquote>
+<p><strong>unique_inverse</strong> : ndarray, optional</p>
+<blockquote>
+<p>The indices to reconstruct the original array from the unique array. Only provided if _return_inverse_ is True.</p>
+</blockquote>
+<p><strong>unique_counts</strong> : ndarray, optional</p>
+<blockquote>
+<p>The number of times each of the unique values comes up in the original array. Only provided if _return_counts_ is True. .. versionadded:: 1.9.0</p>
+</blockquote>
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/numpy/" rel="tag"># numpy</a>
+          
+            <a href="/tags/二维数组去重/" rel="tag"># 二维数组去重</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/23/rlnotes/" rel="next" title="强化学习笔记——简介">
+                <i class="fa fa-chevron-left"></i> 强化学习笔记——简介
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/13/frp/" rel="prev" title="使用frp搭建内网穿透">
+                使用frp搭建内网穿透 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -421,8 +601,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -586,6 +775,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#numpy-unique"><span class="nav-number">1.</span> <span class="nav-text">numpy.unique</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -722,6 +928,10 @@
 
 
   
+  <script src="/js/scrollspy.js?v=7.0.1"></script>
+<script src="/js/post-details.js?v=7.0.1"></script>
+
+
 
   
 
@@ -737,6 +947,8 @@
 
   
 
+
+  
 
 
   
