@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="首先放上一个链接：如何使用python将二维数组去重呢? 其中提到了两种方案： #方案1:转化为虚数x=c[:,0]+c[:,1]*1jprint(‘转化为虚数:’,x)print(‘虚数去重后:’,np.unique(x))print(np.unique(x,return_index=True))#return_index:输出的元素索引值idx=np.unique(x,return_index">
+  <meta name="description" content="首先放上一个链接：如何使用python将二维数组去重呢? 其中提到了两种方案： 方案1:转化为虚数x=c[:,0]+c[:,1]*1jprint(‘转化为虚数:’,x)print(‘虚数去重后:’,np.unique(x))print(np.unique(x,return_index=True))#return_index:输出的元素索引值idx=np.unique(x,return_index=">
 <meta name="keywords" content="numpy,二维数组去重">
 <meta property="og:type" content="article">
 <meta property="og:title" content="numpy对二维数组去重（附np.unique()文档）">
 <meta property="og:url" content="https://berniel.github.io/2018/05/07/np-unique/index.html">
 <meta property="og:site_name" content="Bernie Liang&#39;s Blog">
-<meta property="og:description" content="首先放上一个链接：如何使用python将二维数组去重呢? 其中提到了两种方案： #方案1:转化为虚数x=c[:,0]+c[:,1]*1jprint(‘转化为虚数:’,x)print(‘虚数去重后:’,np.unique(x))print(np.unique(x,return_index=True))#return_index:输出的元素索引值idx=np.unique(x,return_index">
+<meta property="og:description" content="首先放上一个链接：如何使用python将二维数组去重呢? 其中提到了两种方案： 方案1:转化为虚数x=c[:,0]+c[:,1]*1jprint(‘转化为虚数:’,x)print(‘虚数去重后:’,np.unique(x))print(np.unique(x,return_index=True))#return_index:输出的元素索引值idx=np.unique(x,return_index=">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-04-05T07:57:12.460Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="numpy对二维数组去重（附np.unique()文档）">
-<meta name="twitter:description" content="首先放上一个链接：如何使用python将二维数组去重呢? 其中提到了两种方案： #方案1:转化为虚数x=c[:,0]+c[:,1]*1jprint(‘转化为虚数:’,x)print(‘虚数去重后:’,np.unique(x))print(np.unique(x,return_index=True))#return_index:输出的元素索引值idx=np.unique(x,return_index">
+<meta name="twitter:description" content="首先放上一个链接：如何使用python将二维数组去重呢? 其中提到了两种方案： 方案1:转化为虚数x=c[:,0]+c[:,1]*1jprint(‘转化为虚数:’,x)print(‘虚数去重后:’,np.unique(x))print(np.unique(x,return_index=True))#return_index:输出的元素索引值idx=np.unique(x,return_index=">
 
 
 
@@ -463,18 +463,18 @@
 
       
         <p>首先放上一个链接：<a href="http://www.cnblogs.com/Michelle-Yang/p/6730818.html" target="_blank" rel="noopener">如何使用python将二维数组去重呢?</a> 其中提到了两种方案：</p>
-<p>#方案1:转化为虚数<br>x=c[:,0]+c[:,1]*1j<br>print(‘转化为虚数:’,x)<br>print(‘虚数去重后:’,np.unique(x))<br>print(np.unique(x,return_index=True))#return_index:输出的元素索引值<br>idx=np.unique(x,return_index=True)[1]<br>print(‘二维数组去重:\n’,c[idx])</p>
-<p>#方案2:利用set<br>print(‘去重方案2:\n’,np.array(list(set([tuple(t) for t in c]))))</p>
+<h1 id="方案1-转化为虚数"><a href="#方案1-转化为虚数" class="headerlink" title="方案1:转化为虚数"></a>方案1:转化为虚数</h1><p>x=c[:,0]+c[:,1]*1j<br>print(‘转化为虚数:’,x)<br>print(‘虚数去重后:’,np.unique(x))<br>print(np.unique(x,return_index=True))#return_index:输出的元素索引值<br>idx=np.unique(x,return_index=True)[1]<br>print(‘二维数组去重:\\n’,c[idx])</p>
+<h1 id="方案2-利用set"><a href="#方案2-利用set" class="headerlink" title="方案2:利用set"></a>方案2:利用set</h1><p>print(‘去重方案2:\\n’,np.array(list(set([tuple(t) for t in c]))))</p>
 <p>但是思前想后，感觉这么简单常用的功能不至于这么麻烦。于是我又把np.unique()这个函数看了一遍，发现np.unique()是可以直接解决的。PS:吐槽一下，第二种方案是真的慢。 直接上代码：<br><a id="more"></a><br>import numpy as np<br>a = np.array([[1,2,3,4],[5,6,7,8],[9,10,11,12],[1,2,3,4]])<br>print ‘a:’<br>print a<br>print ‘unique:’<br>print np.unique(a, axis=0)</p>
 <p>输出：</p>
 <p>a:<br>[[ 1  2  3  4]<br> [ 5  6  7  8]<br> [ 9 10 11 12]<br> [ 1  2  3  4]]<br>unique:<br>[[ 1  2  3  4]<br> [ 5  6  7  8]<br> [ 9 10 11 12]]</p>
 <p>我们可以看到，np.unique()并不是简单地只有np.unique(a)这么一种调用形式。附上<a href="https://docs.scipy.org/doc/numpy-1.14.0/reference/generated/numpy.unique.html" target="_blank" rel="noopener">np.unique()的文档</a>：</p>
-<h1 id="numpy-unique"><a href="#numpy-unique" class="headerlink" title="numpy.unique"></a>numpy.unique</h1><p><code>numpy.`</code>unique`(_ar_, _return_index=False_, _return_inverse=False_, _return_counts=False_, <em>axis=None</em>)<a href="http://github.com/numpy/numpy/blob/v1.14.0/numpy/lib/arraysetops.py#L113-L248" target="_blank" rel="noopener">[source]</a></p>
+<h1 id="numpy-unique"><a href="#numpy-unique" class="headerlink" title="numpy.unique"></a>numpy.unique</h1><p><code>numpy.``unique</code>(_ar_, _return_index=False_, _return_inverse=False_, _return_counts=False_, _axis=None_)<a href="http://github.com/numpy/numpy/blob/v1.14.0/numpy/lib/arraysetops.py#L113-L248" target="_blank" rel="noopener">[source]</a></p>
 <p>Find the unique elements of an array. Returns the sorted unique elements of an array. There are three optional outputs in addition to the unique elements: the indices of the input array that give the unique values, the indices of the unique array that reconstruct the input array, and the number of times each unique value comes up in the input array.</p>
 <p>Parameters:</p>
 <p><strong>ar</strong> : array_like</p>
 <blockquote>
-<p>Input array. Unless <em>axis</em> is specified, this will be flattened if it is not already 1-D.</p>
+<p>Input array. Unless _axis_ is specified, this will be flattened if it is not already 1-D.</p>
 </blockquote>
 <p><strong>return_index</strong> : bool, optional</p>
 <blockquote>
@@ -490,7 +490,7 @@
 </blockquote>
 <p><strong>axis</strong> : int or None, optional</p>
 <blockquote>
-<p>The axis to operate on. If None, _ar_ will be flattened beforehand. Otherwise, duplicate items will be removed along the provided axis, with all the other axes belonging to the each of the unique elements. Object arrays or structured arrays that contain objects are not supported if the <em>axis</em> kwarg is used. .. versionadded:: 1.13.0</p>
+<p>The axis to operate on. If None, _ar_ will be flattened beforehand. Otherwise, duplicate items will be removed along the provided axis, with all the other axes belonging to the each of the unique elements. Object arrays or structured arrays that contain objects are not supported if the _axis_ kwarg is used. .. versionadded:: 1.13.0</p>
 </blockquote>
 <p>Returns:</p>
 <p><strong>unique</strong> : ndarray</p>
@@ -630,7 +630,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -696,7 +696,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">12</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -767,7 +771,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#numpy-unique"><span class="nav-number">1.</span> <span class="nav-text">numpy.unique</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#方案1-转化为虚数"><span class="nav-number">1.</span> <span class="nav-text">方案1:转化为虚数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#方案2-利用set"><span class="nav-number">2.</span> <span class="nav-text">方案2:利用set</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#numpy-unique"><span class="nav-number">3.</span> <span class="nav-text">numpy.unique</span></a></li></ol></div>
             
 
           </div>
@@ -935,6 +939,13 @@
   
 
   
+  
+
+  
+  
+
+  
+
 
   
 

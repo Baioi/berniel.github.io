@@ -97,7 +97,7 @@
 
 
   <meta name="description" content="本篇简单介绍强化学习的概念和定义，主要学习自资料David Silver的强化学习教程（b站有字幕版本）和莫凡Python。其他的RL学习笔记对于逻辑的梳理和概念理解上也给了很多的参考和指导，感谢！博主小白一只，有任何理解不当之处请不吝赐教，谢谢！图片来源均标于图片，侵删。  一、什么是强化学习强化学习在计算机领域可以算作机器学习大家族中的一个大类。它和有监督学习、无监督学习的关系可以从上面这个图">
-<meta name="keywords" content="学习,强化学习,机器学习">
+<meta name="keywords" content="机器学习,学习,强化学习">
 <meta property="og:type" content="article">
 <meta property="og:title" content="强化学习笔记——简介">
 <meta property="og:url" content="https://berniel.github.io/2018/04/23/rlnotes/index.html">
@@ -482,7 +482,9 @@
 <p><strong>3) 时序性</strong>。第三个特点是时序性。强化学习不像有监督学习，数据是独立同分布的，我们把样本和标签送进去学习就可以。强化学习的数据是一系列有序的数据。拿刚才这个图来说，小孩子选择看电视后，在下一个时间段又面临着写作业还是看电视的选择，也就是说，机器人每做一个选择，都会进入到一个状态，在这个状态中又进行新的行为选择。</p>
 <p><strong>4) 机器人的行为会影响到它接下来接收到的数据和反馈等</strong>。</p>
 <p>接下来我们可以看几个例子。 第一个是莫凡Python的强化学习中用Q-Learning写的走迷宫的程序，程序非常简单，但我觉得这个对强化学习的理解比较清楚，所以把这个当成一个例子来给大家看一下。在这个程序里，黑色的块代表地狱（Reward=-1），黄色的块代表天堂（Reward=1）。一开始机器人并不知道怎么走，于是随机选择的自己的路径，到后面碰到黑块的次数就越来越少，直到找到出口以后，往出口走的步数就越来越少，表示这个机器人在这件事上已经越来越熟练了。</p>
-<video id="video" controls preload="none"><br><source id="mp4" src="https://morvanzhou.github.io/static/results/reinforcement-learning/maze%20q.mp4" type="video/mp4"><br></video>
+<video id="video" controls preload="none">
+<source id="mp4" src="https://morvanzhou.github.io/static/results/reinforcement-learning/maze%20q.mp4" type="video/mp4">
+</video>
 
 <p>另外的例子有:</p>
 <p>1） 自动驾驶直升机模型，对于直升机在每个地点、每种动作的不同状态，直升机需要不断地尝试。在直升机跑出满意的轨迹时给一定的正反馈。直升机坠毁时给负反馈。</p>
@@ -494,7 +496,7 @@
 <h3 id="序列决策问题"><a href="#序列决策问题" class="headerlink" title="序列决策问题"></a>序列决策问题</h3><p><strong>序列决策</strong>：通过与环境的交互，进行多次决策后，选择合适的动作，最大化来自将来的奖励。</p>
 <p><strong>奖励（Reward）</strong>：奖励Rt是一个标量反馈信号，反映了智能体在某个时刻行为的好坏。</p>
 <p><strong>奖励假说（Reward Hypothesis）</strong>：所有目标都可以表示为最大化期望累计回报。</p>
-<p><em>——强化学习是建立在该假说上的</em></p>
+<p>_——强化学习是建立在该假说上的_</p>
 <p><img src="/2018/04/23/rlnotes/图片4-295x300.png" alt="图源：David Silver RL课程" title="图源：David Silver RL课程"></p>
 <h3 id="个体与环境"><a href="#个体与环境" class="headerlink" title="个体与环境"></a>个体与环境</h3><p>我们可以从个体和环境两方面来描述强化学习问题。</p>
 <p><strong>个体</strong>：我们用图中这个大脑来表示一个个体。这个个体可以做出一定的行动，比如说写作业、做投资、机器人走路等等。而采取的每一步行动都取决于他所获得的信息。每采取一次行动，agent都会获得关于环境的新的信息。就像机器人走路，一边走一边拿相机给周围拍照，来判断有哪些不一样。同时，这个个体可能会获得奖励信号，来判断采取的行动的好坏。所有的agent都有两个输入，一个是观察到的环境信息，另一个是奖励信号，这些输入决定了下一步采取的措施。我们最后的目的就是看一下这个大脑中到底学习到了什么样的算法。</p>
@@ -519,7 +521,7 @@
 <h3 id="策略"><a href="#策略" class="headerlink" title="策略"></a>策略</h3><p>策略定义了agent的行为方式，是从状态到行为的一个映射，策略可以是一个简单的函数，对于每一种状态都有一种确定的决策，如<img src="/2018/04/23/rlnotes/图片8.png" alt></p>
 <p>也可以是一个查询表或者是根据概率取值，对于每一种状态，给出某种决策的概率，如</p>
 <p><img src="/2018/04/23/rlnotes/图片9-300x38.png" alt></p>
-<p><em>值函数：</em>值函数是一个对未来奖励的预测，用来评价当前状态的好坏程度。比如，当Agent面临状态1和状态2（对应动作1和动作2）时，会选择奖励最大的，而值函数就是用来预测这个奖励的。</p>
+<p>_值函数：_值函数是一个对未来奖励的预测，用来评价当前状态的好坏程度。比如，当Agent面临状态1和状态2（对应动作1和动作2）时，会选择奖励最大的，而值函数就是用来预测这个奖励的。</p>
 <p><img src="/2018/04/23/rlnotes/图片7-300x24.png" alt></p>
 <p>上面这个公式是值函数的数学形式，可以看出它是在当前状态下对未来获得的奖励的预测。里面的伽马叫做折扣因子，表示越远的step获得的reward越不重要。</p>
 <h3 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h3><p>模型用于预测环境变化，以此来确定下一步我们的行动应该是什么。模型对环境的动态特性(Dynamics)进行建模，判断某一个状态将会产生什么样的下次状态、对应的动作以及获得的奖励。具体而言，有两个组成部分，一个是预测下一个状态的概率 ，另一个是预测下一次的奖励的期望。</p>
@@ -553,11 +555,11 @@
       
         <div class="post-tags">
           
+            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
+          
             <a href="/tags/学习/" rel="tag"># 学习</a>
           
             <a href="/tags/强化学习/" rel="tag"># 强化学习</a>
-          
-            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
           
         </div>
       
@@ -653,7 +655,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -719,7 +721,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">12</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -958,6 +964,13 @@
   
 
   
+  
+
+  
+  
+
+  
+
 
   
 

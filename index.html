@@ -349,6 +349,212 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://berniel.github.io/2019/04/06/机器学习笔记（一）线性回归/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bernie Liang">
+      <meta itemprop="description" content="默默地放上一些学习的进度和瞎搞的东西">
+      <meta itemprop="image" content="/images/photo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bernie Liang's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/04/06/机器学习笔记（一）线性回归/" class="post-title-link" itemprop="url">机器学习笔记（一）线性模型</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-06 13:24:34" itemprop="dateCreated datePublished" datetime="2019-04-06T13:24:34+08:00">2019-04-06</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-07 15:06:10" itemprop="dateModified" datetime="2019-04-07T15:06:10+08:00">2019-04-07</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/机器学习/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="一、线性回归"><a href="#一、线性回归" class="headerlink" title="一、线性回归"></a>一、线性回归</h2><h3 id="线性回归模型"><a href="#线性回归模型" class="headerlink" title="线性回归模型"></a>线性回归模型</h3><p>考虑单个变量：</p>
+<script type="math/tex; mode=display">y=wx+b</script><p>考虑到多个变量：</p>
+<script type="math/tex; mode=display">y=\theta_0 + \theta_1 x_1 + \theta_2 x_2 + ... + \theta_m x_m = \sum^n_{i=0}\theta_i x_i = \theta^T x</script><h3 id="误差与最大似然估计"><a href="#误差与最大似然估计" class="headerlink" title="误差与最大似然估计"></a>误差与最大似然估计</h3><p>但是，模型对某个样本$x^{(i)}$的预测值$\theta^T x^{(i)}$并不一定会等于样本的真实值$y^{(i)}$，即一定会存在误差$\epsilon^{(i)}$，使得</p>
+<script type="math/tex; mode=display">y^{(i)} = \theta^T x^{(i)} + \epsilon^{(i)}.</script><p>我们<strong>假定</strong>误差$\epsilon^{(i)}$是独立同分布的，且服从均值为0，方差为$\sigma^2$的<strong>正态分布</strong>（根据中心极限定理），即$\epsilon^{(i)} \sim N(0, \sigma^2)$，那么可以得到$\epsilon^{(i)}$的概率密度：</p>
+<script type="math/tex; mode=display">p(\epsilon^{(i)}) = \frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{\epsilon^2}{2\sigma^2}}</script><p>代入上面的公式，得到</p>
+<script type="math/tex; mode=display">p(y^{(i)}|x^{(i)};\theta)=\frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(y^{(i)}-\theta^T x^{(i)})^2}{2\sigma^2}}</script><p>利用最大似然估计</p>
+<script type="math/tex; mode=display">L(\theta) = \prod^m_{i=1}p(y^{(i)}|x^{(i)};\theta)</script><p>最大对数似然，得到</p>
+<script type="math/tex; mode=display">l(\theta)=log(L(\theta))=mlog\frac{1}{\sqrt{2\pi}\sigma}-\frac{1}{2\sigma^2}\sum^m_{i=1}(y^{(i)}-\theta^T x^{(i)})^2</script><p>求解$\mathop{\arg\max}_{\theta}l(\theta)$可计算$\theta$。</p>
+<h3 id="最小二乘法与求解"><a href="#最小二乘法与求解" class="headerlink" title="最小二乘法与求解"></a>最小二乘法与求解</h3><p>我们发现，最大似然估计中存在若干定值，把它们去掉后，可整理出</p>
+<script type="math/tex; mode=display">J(\theta) = \frac{1}{2}\sum^m_{i=1}(y^{(i)}-\theta^T x^{(i)})^2</script><script type="math/tex; mode=display">\theta^* = \mathop{\arg\min}_{\theta}J(\theta)</script><p>可以看出，$J(\theta)$（目标函数）实际上就是预测值和实际值差值的平方，我们把它称为“<strong>均方误差</strong>（平方损失）”。这种基于均方误差最小化来进行模型求解的方法称为“<strong>最小二乘法</strong>”，其几何意义为找一条直线使所有样本到直线上的欧式距离之和最小。目标函数的求解过程如下：</p>
+<script type="math/tex; mode=display">J(\theta) = \frac{1}{2}\sum^m_{i=1}(y^{(i)}-\theta^T x^{(i)})^2=\frac{1}{2}(X\theta-y)^T(X\theta-y)</script><p>梯度（这里的推算需要对矩阵运算有一定的掌握QuQ）<script type="math/tex">\nabla_\theta J = \nabla_\theta \frac{1}{2}(X\theta-y)^T(X\theta-y) = X^TX\theta-X^Ty</script><br>求驻点，得到</p>
+<script type="math/tex; mode=display">\theta^* = (X^TX)^{-1}X^Ty</script><p>附一个该最优解的“简单记忆方法”：</p>
+<script type="math/tex; mode=display">X\theta = y \Rightarrow X^T X\theta = X^T y \Rightarrow \theta = (X^TX)^{-1}X^Ty</script><h3 id="正则项"><a href="#正则项" class="headerlink" title="正则项"></a>正则项</h3><p>我们发现上面的$\theta^*$中有一个求逆运算，但是实际上我们并不能够保证$X^TX$可逆。如果$X^TX$不可逆该怎么办呢？常见的做法是引入正则化。关于正则化的细节，会在另一篇博文里面阐述。</p>
+<h3 id="广义线性模型"><a href="#广义线性模型" class="headerlink" title="广义线性模型"></a>广义线性模型</h3><p>广义线性模型的概念很简单，就是令</p>
+<script type="math/tex; mode=display">g(y)=\theta^T x \Rightarrow y=g^{-1}(\theta^T x)</script><p>比如对数线性回归$ln(y) = \theta^T x$，Logistic回归$ln\frac{y}{1-y} = \theta^T x$。称$g(\cdot)$为“联系函数”。</p>
+<h2 id="二、Logistic回归"><a href="#二、Logistic回归" class="headerlink" title="二、Logistic回归"></a>二、Logistic回归</h2><h3 id="模型及推导"><a href="#模型及推导" class="headerlink" title="模型及推导"></a>模型及推导</h3><p>如何将线性回归模型这一回归模型用于解决分类问题？如果是二分类的话，假设其输出标记$y \in \{0, 1\}$，一个最理想的结果是将回归的结果进行一个“单位阶跃函数”的映射，即</p>
+<script type="math/tex; mode=display">y=\left\{
+\begin{aligned}
+0 & , & \theta^T x<0; \\
+0.5 & , & \theta^T x = 0; \\
+1 & , & \theta^T x > 0,
+\end{aligned}
+\right.</script><p>但是单位阶跃函数不连续，不可微。因此，使用单调可微的<strong>Logistic函数</strong>(Sigmoid函数)作为单位阶跃函数的替代函数：</p>
+<script type="math/tex; mode=display">y = \frac{1}{1+e^{-\theta^T x}}</script><p>这个函数的图像为<br><img src="/2019/04/06/机器学习笔记（一）线性回归/sigmoid.png" alt="avatar"><br>对Logistic函数进行推导，得到<script type="math/tex">ln\frac{y}{1-y} = \theta^T x,</script><br>这里，我们对模型的输出做一个<strong>假设</strong>：假设y即为样本x的预测为正例的概率，即$y=p(y=1|x;\theta)$且该模型服从<strong>二项分布</strong>。（事实上，从Logistic函数的曲线上能看出这个假设的合理性）则我们能够计算出：</p>
+<script type="math/tex; mode=display">p(y=1|x;\theta)=\frac{e^{\theta^T x}}{1 + e^{\theta^T x}};</script><script type="math/tex; mode=display">p(y=0|x;\theta)=1-p(y=1|x;\theta)=\frac{1}{1 + e^{\theta^T x}}.</script><p>这也就是logistic回归的模型。</p>
+<h3 id="参数推导"><a href="#参数推导" class="headerlink" title="参数推导"></a>参数推导</h3><p>把上面的两个概率表示进行合并，得到<script type="math/tex">p(y|x;\theta)=p(y=1|x;\theta)^y \cdot p(y=0|x;\theta)^{1-y}</script><br>使用极大似然估计：</p>
+<script type="math/tex; mode=display">L(\theta)=\prod^n_{i=1}p(y^{(i)}|x^{(i)};\theta)=\prod^n_{i=1}p(y^{(i)}=1|x^{(i)};\theta)^y \cdot p(y^{(i)}=0|x^{(i)};\theta)^{1-y}</script><p>运用对数极大似然（上标敲起来太麻烦了，先省略）：</p>
+<script type="math/tex; mode=display">l(\theta) = log(L(\theta))=\sum^n_{i=1}ylog(p(y=1|x;\theta))+\sum^n_{i=1}(1-y)log(p(y=0|x;\theta))</script><p>整理得</p>
+<script type="math/tex; mode=display">l(\theta)=\sum^n_{i=1}y\cdot\theta^T x-log(1+e^{\theta x})</script><p>令$p=p(y=1|x;\theta)$，对$l(\theta)$求偏导（只放结果，省略上标）：</p>
+<script type="math/tex; mode=display">\frac{\partial l(\theta)}{\partial \theta_j}=\sum^n_{i=1}(y-p)x_j</script><p>因为是极大似然，所以$\theta^* = \mathop{\arg\max}_{\theta}l(\theta)$。其损失函数对上面的极大对数似然取反即可，即</p>
+<script type="math/tex; mode=display">loss(\theta)=\sum^n_{i=1}-y\cdot\theta^T x+log(1+e^{\theta x}),</script><script type="math/tex; mode=display">\theta^* = \mathop{\arg\min}_{\theta}loss(\theta)</script><p>之后可可运用梯度下降法求解。</p>
+<h3 id="多项Logistic回归（Softmax回归）"><a href="#多项Logistic回归（Softmax回归）" class="headerlink" title="多项Logistic回归（Softmax回归）"></a>多项Logistic回归（Softmax回归）</h3><p>把Logistic回归进行推广，可以推导出Softmax回归模型，即随机变量$y$的取值集合是$\{1,2,…,K\}$。<br>则Softmax回归的模型为：</p>
+<script type="math/tex; mode=display">p(y=k|x;\theta)=\frac{e^{\theta^T_k x}}{\sum^K_{l=1} e^{\theta_l^T x}};</script><p>类似的，对数似然函数可推导出：</p>
+<script type="math/tex; mode=display">J(\theta) = \sum^K_{k=1} y_k(\theta^T_k x - log\sum^K_{l=1}e^{\theta_l^T x})</script><p>随机梯度：</p>
+<script type="math/tex; mode=display">\frac{\partial J(\theta)}{\partial \theta_k} = (y_k - p(y_k | x;\theta))\cdot x</script>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://berniel.github.io/2019/04/01/construct/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -821,8 +1027,8 @@
       
         
           <p>首先放上一个链接：<a href="http://www.cnblogs.com/Michelle-Yang/p/6730818.html" target="_blank" rel="noopener">如何使用python将二维数组去重呢?</a> 其中提到了两种方案：</p>
-<p>#方案1:转化为虚数<br>x=c[:,0]+c[:,1]*1j<br>print(‘转化为虚数:’,x)<br>print(‘虚数去重后:’,np.unique(x))<br>print(np.unique(x,return_index=True))#return_index:输出的元素索引值<br>idx=np.unique(x,return_index=True)[1]<br>print(‘二维数组去重:\n’,c[idx])</p>
-<p>#方案2:利用set<br>print(‘去重方案2:\n’,np.array(list(set([tuple(t) for t in c]))))</p>
+<h1 id="方案1-转化为虚数"><a href="#方案1-转化为虚数" class="headerlink" title="方案1:转化为虚数"></a>方案1:转化为虚数</h1><p>x=c[:,0]+c[:,1]*1j<br>print(‘转化为虚数:’,x)<br>print(‘虚数去重后:’,np.unique(x))<br>print(np.unique(x,return_index=True))#return_index:输出的元素索引值<br>idx=np.unique(x,return_index=True)[1]<br>print(‘二维数组去重:\\n’,c[idx])</p>
+<h1 id="方案2-利用set"><a href="#方案2-利用set" class="headerlink" title="方案2:利用set"></a>方案2:利用set</h1><p>print(‘去重方案2:\\n’,np.array(list(set([tuple(t) for t in c]))))</p>
 <p>但是思前想后，感觉这么简单常用的功能不至于这么麻烦。于是我又把np.unique()这个函数看了一遍，发现np.unique()是可以直接解决的。PS:吐槽一下，第二种方案是真的慢。 直接上代码：<br></p>
           <!--noindex-->
           
@@ -1277,7 +1483,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1343,7 +1549,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">12</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1559,6 +1769,69 @@
   
 
   
+  
+
+  
+  
+    
+      
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
 
   
 
