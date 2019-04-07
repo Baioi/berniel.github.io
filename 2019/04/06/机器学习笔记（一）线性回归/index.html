@@ -105,7 +105,7 @@
 <meta property="og:description" content="一、线性回归线性回归模型考虑单个变量： y=wx+b考虑到多个变量： y=\theta_0 + \theta_1 x_1 + \theta_2 x_2 + ... + \theta_m x_m = \sum^n_{i=0}\theta_i x_i = \theta^T x误差与最大似然估计但是，模型对某个样本$x^{(i)}$的预测值$\theta^T x^{(i)}$并不一定会等于样本的真实值$">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://berniel.github.io/2019/04/06/机器学习笔记（一）线性回归/sigmoid.png">
-<meta property="og:updated_time" content="2019-04-07T07:06:10.532Z">
+<meta property="og:updated_time" content="2019-04-07T07:11:32.383Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习笔记（一）线性模型">
 <meta name="twitter:description" content="一、线性回归线性回归模型考虑单个变量： y=wx+b考虑到多个变量： y=\theta_0 + \theta_1 x_1 + \theta_2 x_2 + ... + \theta_m x_m = \sum^n_{i=0}\theta_i x_i = \theta^T x误差与最大似然估计但是，模型对某个样本$x^{(i)}$的预测值$\theta^T x^{(i)}$并不一定会等于样本的真实值$">
@@ -412,7 +412,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-07 15:06:10" itemprop="dateModified" datetime="2019-04-07T15:06:10+08:00">2019-04-07</time>
+                <time title="修改时间：2019-04-07 15:11:32" itemprop="dateModified" datetime="2019-04-07T15:11:32+08:00">2019-04-07</time>
               
             
           </span>
@@ -471,7 +471,7 @@
 <script type="math/tex; mode=display">p(\epsilon^{(i)}) = \frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{\epsilon^2}{2\sigma^2}}</script><p>代入上面的公式，得到</p>
 <script type="math/tex; mode=display">p(y^{(i)}|x^{(i)};\theta)=\frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(y^{(i)}-\theta^T x^{(i)})^2}{2\sigma^2}}</script><p>利用最大似然估计</p>
 <script type="math/tex; mode=display">L(\theta) = \prod^m_{i=1}p(y^{(i)}|x^{(i)};\theta)</script><p>最大对数似然，得到</p>
-<script type="math/tex; mode=display">l(\theta)=log(L(\theta))=mlog\frac{1}{\sqrt{2\pi}\sigma}-\frac{1}{2\sigma^2}\sum^m_{i=1}(y^{(i)}-\theta^T x^{(i)})^2</script><p>求解$\mathop{\arg\max}_{\theta}l(\theta)$可计算$\theta$。</p>
+<script type="math/tex; mode=display">l(\theta)=log(L(\theta))=mlog\frac{1}{\sqrt{2\pi}\sigma}-\frac{1}{2\sigma^2}\sum^m_{i=1}(y^{(i)}-\theta^T x^{(i)})^2</script><p>求解$\mathop{\arg\max}_{\theta}l(\theta)$可计算$\theta$。<br><a id="more"></a></p>
 <h3 id="最小二乘法与求解"><a href="#最小二乘法与求解" class="headerlink" title="最小二乘法与求解"></a>最小二乘法与求解</h3><p>我们发现，最大似然估计中存在若干定值，把它们去掉后，可整理出</p>
 <script type="math/tex; mode=display">J(\theta) = \frac{1}{2}\sum^m_{i=1}(y^{(i)}-\theta^T x^{(i)})^2</script><script type="math/tex; mode=display">\theta^* = \mathop{\arg\min}_{\theta}J(\theta)</script><p>可以看出，$J(\theta)$（目标函数）实际上就是预测值和实际值差值的平方，我们把它称为“<strong>均方误差</strong>（平方损失）”。这种基于均方误差最小化来进行模型求解的方法称为“<strong>最小二乘法</strong>”，其几何意义为找一条直线使所有样本到直线上的欧式距离之和最小。目标函数的求解过程如下：</p>
 <script type="math/tex; mode=display">J(\theta) = \frac{1}{2}\sum^m_{i=1}(y^{(i)}-\theta^T x^{(i)})^2=\frac{1}{2}(X\theta-y)^T(X\theta-y)</script><p>梯度（这里的推算需要对矩阵运算有一定的掌握QuQ）<script type="math/tex">\nabla_\theta J = \nabla_\theta \frac{1}{2}(X\theta-y)^T(X\theta-y) = X^TX\theta-X^Ty</script><br>求驻点，得到</p>
