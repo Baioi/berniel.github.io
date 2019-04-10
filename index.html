@@ -349,6 +349,207 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://berniel.github.io/2019/04/10/SVM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bernie Liang">
+      <meta itemprop="description" content="默默地放上一些学习的进度和瞎搞的东西">
+      <meta itemprop="image" content="/images/photo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bernie Liang's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/04/10/SVM/" class="post-title-link" itemprop="url">机器学习笔记（二）支持向量机</a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-10 16:48:02 / 修改时间：23:00:03" itemprop="dateCreated datePublished" datetime="2019-04-10T16:48:02+08:00">2019-04-10</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/机器学习/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="支持向量机"><a href="#支持向量机" class="headerlink" title="支持向量机"></a>支持向量机</h1><h2 id="1-原理与目标"><a href="#1-原理与目标" class="headerlink" title="1.原理与目标"></a>1.原理与目标</h2><h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>找到一个目标函数$L(\theta)$，求解最优的参数$\theta$。</p>
+<h3 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h3><p>我们在这里先画个大饼：支持向量机SVM包括什么呢？</p>
+<ol>
+<li><p>线性可分支持向量机<br><img src="/2019/04/10/SVM/SVM1.png" alt="avatar"><br>首先，我们假定数据集是<strong>线性可分</strong>的。如上面这张图，划一条线（我们称之为分界面）就能把两类数据完完全全地分开。这时我们的目标是<strong>硬间隔最大化</strong>，称使用这种方法构建的SVM叫做<strong>硬间隔支持向量机</strong>。</p>
+</li>
+<li><p>线性支持向量机<br><img src="/2019/04/10/SVM/SVM2.png" alt="avatar"><br>当然，实际生活中不可能所有数据都完美地线性可分，事实上我们经常会碰到<strong>线性不可分</strong>的情况。比如上面这张图，混进去了一个敌方的奸细，这个时候线性可分支持向量机显然找不到一个合适的分界面，能将数据分开。<br>不过不要紧，SVM依旧能够处理。此时我们的目标是<strong>软间隔最大化</strong>，称使用这种方法构建的SVM叫做<strong>软间隔支持向量机</strong>。</p>
+</li>
+<li><p>非线性支持向量机<br><img src="/2019/04/10/SVM/SVM3.png" alt="avatar"><br>此外，对于线性不可分的数据，还可以引入<strong>核函数</strong>进行更强大的分类。称此时的支持向量机为<strong>非线性支持向量机</strong>。</p>
+</li>
+</ol>
+<p>上面这三类SVM就是我们这次主要学习的内容了~</p>
+<p>附上一点讨论：到底是用线性可分支持向量机还是线性支持向量机？<br><img src="/2019/04/10/SVM/SVM4.png" alt="线性可分vs线性"><br>适合线性SVM的情况有2点：</p>
+<ol>
+<li>数据集线性不可分；</li>
+<li>不一定分类完全正确的分类器就是最好的。这一点我们可以参照上图的右边这张图，可以看到实线对于数据做到了全部正确划分，然而事实上把虚线作为分类器或许会更合理，因为它看起来对于可能存在的噪声具有更好的鲁棒性。</li>
+</ol>
+<h2 id="2-线性可分SVM"><a href="#2-线性可分SVM" class="headerlink" title="2. 线性可分SVM"></a>2. 线性可分SVM</h2><h3 id="对SVM的简单理解"><a href="#对SVM的简单理解" class="headerlink" title="对SVM的简单理解"></a>对SVM的简单理解</h3><p>言归正传，我们开始我们今天的学习内容。其实线性可分SVM的想法主要是来自于下面这个线性分类问题。假设说我们需要确定一个超平面，使得样本能够正确分类，那么下面这张图哪一个超平面的分类效果会更好一点？<br><img src="/2019/04/10/SVM/SVM5.png" alt="线性可分SVM1"><br>从直觉上，我们会选择那条红色的，因为红色的那条线会使两边不同种类的样本“分得更开”一些，即这两类的样本离中间的红线会更远。因此这个划分超平面所产生的分类结果是最鲁棒的，泛化能力最强。也就是说，我们构建超平面的想法可以是<strong>确定一条线，让这条线离线两边的点越远越好</strong>，而让这条线离两边的点越远越好，也就是让线两边<strong>离线最近的点越远越好</strong>。<br><img src="/2019/04/10/SVM/SVM6.jpg" alt="线性可分SVM2"><br>从上面这个图上来看，离超平面最近的几个样本点（画圈的点）我们称之为“<strong>支持向量</strong>”。而异类支持向量间的距离（两条虚线之间的距离，也即异类支持向量到超平面的距离之和）我们称之为“<strong>间隔</strong>”，也称“<strong>硬间隔</strong>”（大概因为这个间隔的大小就是$\frac{2}{||w||}$，没有商量的余地，太硬了）。</p>
+<p>这里有个小问题：为什么支持向量对应的那两条虚线就一定是<script type="math/tex">w^Tx+b=\pm1</script>呢？怎么保证虚线和直线间的距离一定是<script type="math/tex">\frac{1}{||w||}</script>呢？</p>
+<h3 id="公式推导"><a href="#公式推导" class="headerlink" title="公式推导"></a>公式推导</h3><h4 id="最初的目标函数"><a href="#最初的目标函数" class="headerlink" title="最初的目标函数"></a>最初的目标函数</h4><p>令划分超平面的方程为：</p>
+<script type="math/tex; mode=display">l_j:w^Tx+b=0</script><p>我们学习的目标是得到合适的参数$w, b$。任意样本点$x_i$到这个超平面的距离为</p>
+<script type="math/tex; mode=display">d(x_i, l_j) = \frac{|w^Tx_i+b|}{||w||} = \frac{y_i(w^Tx_i+b)}{||w||}</script><p>其中，$y_i\in\{-1,1\}$为样本的标注。当样本是负样本时，$w^Tx_i+b<0$，因此$y_i(w^tx_i+b)>0$；当样本是正样本时，$w^Tx_i+b&gt;0$，因此$y_i(w^Tx_i+b)&gt;0$。乘以标注$y_i$确保了分子上是正数，去掉了绝对值方便计算。</0$，因此$y_i(w^tx_i+b)></p>
+<p>因此得到最近的样本点到超平面的距离：</p>
+<script type="math/tex; mode=display">\min_id(x_i, l_j) = \frac{1}{||w||}\min_i y_i(w^Tx_i+b)</script><p>而目标函数就是找到上面这个距离最大的直线对应的参数：</p>
+<script type="math/tex; mode=display">\arg\max_{w,b} \min_id(x_i, l_j) = \arg\max_{w,b} \frac{1}{||w||}\min_i y_i(w^Tx_i+b)</script><p>这个目标函数的几何解释是：最近的样本到直线距离最大的直线。套用一个不太恰当的例子，这个感觉有点像：</p>
+<pre><code>假设有一堆木桶，每个木桶都有个短板。那么哪个木桶盛水最多呢？
+首先，我们先要找出来每个木桶的最短的板（求出最近的样本点到超平面的距离）。
+然后找到短板最长的木桶。（找到距离最大的直线对应的参数）
+</code></pre><h4 id="优化的目标函数"><a href="#优化的目标函数" class="headerlink" title="优化的目标函数"></a>优化的目标函数</h4><p>OK，我们现在得到了一个初步的目标函数。但是这个函数貌似不太好化简，长得也不好看。事实上，我们发现，假设上面求出来的众样本到直线的最短距离为$d$，那么$ w^Tx+b=0 $和$\frac{w^Tx}{d}+\frac{b}{d}=0$有一样的形式。</p>
+<p>也就是说，我们可以强行把最近样本点到直线的距离设为1，那么$\min_id(x_i, l_j)$就可以直接写为1了。当然，白嫖是不可能白嫖的，这样就引入了一个约束：$y_i(w^Tx+b)\geq1$（因为最近的样本点到超平面距离为1，所以所有样本点到超平面的距离大于等于1）。</p>
+<p>所以，目标函数可以优化为：</p>
+<script type="math/tex; mode=display">\arg\max_{w,b}\frac{1}{||w||}, \text{  s.t. } y_i(w^Tx+b)\geq1</script><p>等价于</p>
+<script type="math/tex; mode=display">\arg\min_{w,b}{||w||}, \text{  s.t. } y_i(w^Tx+b)\geq1</script><p>等价于</p>
+<script type="math/tex; mode=display">\arg\min_{w,b}{\frac{1}{2}||w||^2}, \text{  s.t. } y_i(w^Tx+b)\geq1</script><p>为什么要做这个等价呢？因为$||w||$是二范数，带根号的那种。平方以后根号就去掉了，计算方便（而且求导也方便）。</p>
+<h4 id="目标函数求解"><a href="#目标函数求解" class="headerlink" title="目标函数求解"></a>目标函数求解</h4><p>现在，我们手头上已经有了线性可分支持向量机的目标函数：</p>
+<script type="math/tex; mode=display">J(w, b) = \arg\min_{w,b}{\frac{1}{2}||w||^2}, \text{  s.t. } y_i(w^Tx+b)\geq1</script><p>如何求解？事实上，对于这种有不等式约束的问题，最简单的方法叫做<strong>拉格朗日乘子法</strong>（拉格朗日乘子法的具体内容会再开个文章补充）。</p>
+<hr>
+<p>拉格朗日乘子法：</p>
+<p>取$\alpha_1, \alpha_2, …, \alpha_n \geq 0$，令拉格朗日函数</p>
+<script type="math/tex; mode=display">L(w, b, \alpha) = \frac{1}{2}||w||^2-\sum^n_{i=1}\alpha_i [y_i(w^Tx+b)-1]</script><p>则原问题转化为<script type="math/tex">\min_{w,b} \max_\alpha L(w, b, \alpha)</script><br>它的<strong>对偶问题</strong>为<script type="math/tex">\max_\alpha \min_{w,b} L(w, b, \alpha)</script></p>
+<p>可以看到，对偶问题和原始问题的区别在于它们的$\min, \max$互换了。这里有一个理论上的推导，即<strong>原始问题总是大于等于对偶问题</strong>。但是很巧的，在SVM问题中，这里取到了等号（关于这部分理论会再开个文章补充），即：</p>
+<script type="math/tex; mode=display">\min_{w,b} \max_\alpha L(w, b, \alpha)=\max_\alpha \min_{w,b} L(w, b, \alpha)</script><hr>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://berniel.github.io/2019/04/06/ml1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1463,7 +1664,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1533,7 +1734,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">14</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1782,6 +1987,8 @@
     
       
         
+      
+    
       
     
       
