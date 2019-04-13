@@ -394,12 +394,24 @@
                 
               
 
-              <time title="创建时间：2019-04-10 16:48:02 / 修改时间：23:00:03" itemprop="dateCreated datePublished" datetime="2019-04-10T16:48:02+08:00">2019-04-10</time>
+              <time title="创建时间：2019-04-10 16:48:02" itemprop="dateCreated datePublished" datetime="2019-04-10T16:48:02+08:00">2019-04-10</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-11 21:25:49" itemprop="dateModified" datetime="2019-04-11T21:25:49+08:00">2019-04-11</time>
               
             
           </span>
@@ -493,7 +505,21 @@
 <p>取$\alpha_1, \alpha_2, …, \alpha_n \geq 0$，令拉格朗日函数</p>
 <script type="math/tex; mode=display">L(w, b, \alpha) = \frac{1}{2}||w||^2-\sum^n_{i=1}\alpha_i [y_i(w^Tx+b)-1]</script><p>则原问题转化为<script type="math/tex">\min_{w,b} \max_\alpha L(w, b, \alpha)</script><br>它的<strong>对偶问题</strong>为<script type="math/tex">\max_\alpha \min_{w,b} L(w, b, \alpha)</script></p>
 <p>可以看到，对偶问题和原始问题的区别在于它们的$\min, \max$互换了。这里有一个理论上的推导，即<strong>原始问题总是大于等于对偶问题</strong>。但是很巧的，在SVM问题中，这里取到了等号（关于这部分理论会再开个文章补充），即：</p>
-<script type="math/tex; mode=display">\min_{w,b} \max_\alpha L(w, b, \alpha)=\max_\alpha \min_{w,b} L(w, b, \alpha)</script><hr>
+<script type="math/tex; mode=display">\min_{w,b} \max_\alpha L(w, b, \alpha)=\max_\alpha \min_{w,b} L(w, b, \alpha)=\max_ \alpha \min_{w,b} (\frac{1}{2}||w|| - \sum^n_{i=1}\alpha_i[y_i(wx_i+b)-1])</script><hr>
+<p>求解步骤：</p>
+<ol>
+<li><p>求$\min_{w,b}L(w,b,\alpha)$。<br>对$w$求偏导：</p>
+<script type="math/tex; mode=display">\frac{\partial L}{\partial w}=w-\sum^n_{i=1}\alpha_i y_i x_i = 0 \Rightarrow w^*=\sum^n_{i=1}\alpha_i y_i x_i</script><p>对$b$求偏导：</p>
+<script type="math/tex; mode=display">\frac{\partial L}{\partial b} = \sum^n_{i=1} \alpha_i y_i = 0</script><p>带回原式：</p>
+<script type="math/tex; mode=display">\min_{w, b}L = \sum^n_{i=1}\alpha_i - \frac{1}{2}\sum^n_{i=1}\sum^n_{j=1}\alpha_i \alpha_j y_i y_j x_i x_j</script></li>
+<li><p>求解</p>
+<script type="math/tex; mode=display">\alpha^* = \arg\max_\alpha(minL) = \arg\max_\alpha(\sum^n_{i=0} \alpha_i - \frac{1}{2}\sum^n_{i=1}\sum^n_{j=1}\alpha_i \alpha_j y_i y_j x_i x_j)</script></li>
+<li><p>最优解<br>经过上面的若干求解步骤，我们获得了最优的</p>
+<script type="math/tex; mode=display">w^* = \sum^n_{i=1}\alpha_iy_ix_i</script><script type="math/tex; mode=display">b^* = y_j - \sum^N_{i=1}\alpha_i^*y_i(x_i \cdot x_j)</script><p>其中，$j$为$\alpha^<em>$的一个正分量$\alpha_j^</em>&gt;0$的下标。实际上，$w^<em>$和$b^</em>$的取值只取决于$\alpha_j &gt; 0$的样本点$(x_i,y_i)$，<strong>这些样本点就是支持向量</strong>。</p>
+<p>分离超平面：</p>
+<script type="math/tex; mode=display">w^*x + b^* = 0</script><p>分类决策函数：</p>
+<script type="math/tex; mode=display">f(x) = sign(w^*x + b^*)</script></li>
+</ol>
 
           
         
@@ -798,7 +824,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-06 12:19:54" itemprop="dateModified" datetime="2019-04-06T12:19:54+08:00">2019-04-06</time>
+                <time title="修改时间：2019-04-13 14:35:09" itemprop="dateModified" datetime="2019-04-13T14:35:09+08:00">2019-04-13</time>
               
             
           </span>
