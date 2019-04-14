@@ -117,7 +117,7 @@
 <meta property="og:image" content="https://berniel.github.io/2019/04/10/SVM/SVM11.jpg">
 <meta property="og:image" content="https://berniel.github.io/2019/04/10/SVM/SVM12.jpg">
 <meta property="og:image" content="https://berniel.github.io/2019/04/10/SVM/SVM13.png">
-<meta property="og:updated_time" content="2019-04-14T04:17:07.598Z">
+<meta property="og:updated_time" content="2019-04-14T04:19:52.432Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习笔记（二）支持向量机">
 <meta name="twitter:description" content="支持向量机1.原理与目标目标找到一个目标函数$L(\theta)$，求解最优的参数$\theta$。 内容我们在这里先画个大饼：支持向量机SVM包括什么呢？  线性可分支持向量机首先，我们假定数据集是线性可分的。如上面这张图，划一条线（我们称之为分界面）就能把两类数据完完全全地分开。这时我们的目标是硬间隔最大化，称使用这种方法构建的SVM叫做硬间隔支持向量机。  线性支持向量机当然，实际生活中不可">
@@ -424,7 +424,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-14 12:17:07" itemprop="dateModified" datetime="2019-04-14T12:17:07+08:00">2019-04-14</time>
+                <time title="修改时间：2019-04-14 12:19:52" itemprop="dateModified" datetime="2019-04-14T12:19:52+08:00">2019-04-14</time>
               
             
           </span>
@@ -494,8 +494,7 @@
 <li><p>非线性支持向量机<br><img src="/2019/04/10/SVM/SVM3.png" alt="avatar"><br>此外，对于线性不可分的数据，还可以引入<strong>核函数</strong>进行更强大的分类。称此时的支持向量机为<strong>非线性支持向量机</strong>。</p>
 </li>
 </ol>
-<p>上面这三类SVM就是我们这次主要学习的内容了~</p>
-<p>附上一点讨论：到底是用线性可分支持向量机还是线性支持向量机？<br><img src="/2019/04/10/SVM/SVM4.png" alt="线性可分vs线性"><br>适合线性SVM的情况有2点：</p>
+<p>上面这三类SVM就是我们这次主要学习的内容了~<br><a id="more"></a><br>附上一点讨论：到底是用线性可分支持向量机还是线性支持向量机？<br><img src="/2019/04/10/SVM/SVM4.png" alt="线性可分vs线性"><br>适合线性SVM的情况有2点：</p>
 <ol>
 <li>数据集线性不可分；</li>
 <li>不一定分类完全正确的分类器就是最好的。这一点我们可以参照上图的右边这张图，可以看到实线对于数据做到了全部正确划分，然而事实上把虚线作为分类器或许会更合理，因为它看起来对于可能存在的噪声具有更好的鲁棒性。</li>
