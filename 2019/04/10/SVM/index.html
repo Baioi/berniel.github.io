@@ -117,7 +117,7 @@
 <meta property="og:image" content="https://berniel.github.io/2019/04/10/SVM/SVM11.jpg">
 <meta property="og:image" content="https://berniel.github.io/2019/04/10/SVM/SVM12.jpg">
 <meta property="og:image" content="https://berniel.github.io/2019/04/10/SVM/SVM13.png">
-<meta property="og:updated_time" content="2019-04-14T04:34:02.277Z">
+<meta property="og:updated_time" content="2019-04-14T05:22:17.333Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习笔记（二）支持向量机">
 <meta name="twitter:description" content="支持向量机1.原理与目标目标找到一个目标函数$L(\theta)$，求解最优的参数$\theta$。 内容我们在这里先画个大饼：支持向量机SVM包括什么呢？  线性可分支持向量机首先，我们假定数据集是线性可分的。如上面这张图，划一条线（我们称之为分界面）就能把两类数据完完全全地分开。这时我们的目标是硬间隔最大化，称使用这种方法构建的SVM叫做硬间隔支持向量机。  线性支持向量机当然，实际生活中不可">
@@ -424,7 +424,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-14 12:34:02" itemprop="dateModified" datetime="2019-04-14T12:34:02+08:00">2019-04-14</time>
+                <time title="修改时间：2019-04-14 13:22:17" itemprop="dateModified" datetime="2019-04-14T13:22:17+08:00">2019-04-14</time>
               
             
           </span>
@@ -467,6 +467,34 @@
             </span>
           
 
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数"></span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长"></span>
+              
+            </div>
           
 
           
@@ -513,11 +541,11 @@
 </code></pre><h4 id="优化的目标函数"><a href="#优化的目标函数" class="headerlink" title="优化的目标函数"></a>优化的目标函数</h4><p>OK，我们现在得到了一个初步的目标函数。但是这个函数貌似不太好化简，长得也不好看。事实上，我们发现，假设上面求出来的众样本到直线的最短距离为$d$，那么$ w^Tx+b=0 $和$\frac{w^Tx}{d}+\frac{b}{d}=0$有一样的形式。</p>
 <p>也就是说，我们可以强行把最近样本点到直线的距离设为1，那么$\min_id(x_i, l_j)$就可以直接写为1了。当然，白嫖是不可能白嫖的，这样就引入了一个约束：$y_i(w^Tx+b)\geq1$（因为最近的样本点到超平面距离为1，所以所有样本点到超平面的距离大于等于1）。</p>
 <p>所以，目标函数可以优化为：</p>
-<script type="math/tex; mode=display">\arg\max_{w,b}\frac{1}{||w||}, \text{  s.t. } y_i(w^Tx+b)\geq1</script><p>等价于</p>
-<script type="math/tex; mode=display">\arg\min_{w,b}{||w||}, \text{  s.t. } y_i(w^Tx+b)\geq1</script><p>等价于</p>
-<script type="math/tex; mode=display">\arg\min_{w,b}{\frac{1}{2}||w||^2}, \text{  s.t. } y_i(w^Tx+b)\geq1</script><p>为什么要做这个等价呢？因为$||w||$是二范数，带根号的那种。平方以后根号就去掉了，计算方便（而且求导也方便）。</p>
+<script type="math/tex; mode=display">\max_{w,b}\frac{1}{||w||}, \text{  s.t. } y_i(w^Tx+b)\geq1</script><p>等价于</p>
+<script type="math/tex; mode=display">\min_{w,b}{||w||}, \text{  s.t. } y_i(w^Tx+b)\geq1</script><p>等价于</p>
+<script type="math/tex; mode=display">\min_{w,b}{\frac{1}{2}||w||^2}, \text{  s.t. } y_i(w^Tx+b)\geq1</script><p>为什么要做这个等价呢？因为$||w||$是二范数，带根号的那种。平方以后根号就去掉了，计算方便（而且求导也方便）。</p>
 <h4 id="目标函数求解"><a href="#目标函数求解" class="headerlink" title="目标函数求解"></a>目标函数求解</h4><p>现在，我们手头上已经有了线性可分支持向量机的目标函数：</p>
-<script type="math/tex; mode=display">J(w, b) = \arg\min_{w,b}{\frac{1}{2}||w||^2}, \text{  s.t. } y_i(w^Tx+b)\geq1</script><p>如何求解？事实上，对于这种有不等式约束的问题，最简单的方法叫做<strong>拉格朗日乘子法</strong>（拉格朗日乘子法的具体内容会再开个文章补充）。</p>
+<script type="math/tex; mode=display">J(w, b) = \min_{w,b}{\frac{1}{2}||w||^2}, \text{  s.t. } y_i(w^Tx+b)\geq1</script><p>如何求解？事实上，对于这种有不等式约束的问题，最简单的方法叫做<strong>拉格朗日乘子法</strong>（拉格朗日乘子法的具体内容会再开个文章补充）。</p>
 <hr>
 <p>拉格朗日乘子法：</p>
 <p>取$\alpha_1, \alpha_2, …, \alpha_n \geq 0$，令拉格朗日函数</p>
@@ -865,7 +893,21 @@
   <span class="author" itemprop="copyrightHolder">Bernie Liang</span>
 
   
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="站点总字数"></span>
+  
 
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="站点阅读时长"></span>
   
 </div>
 
