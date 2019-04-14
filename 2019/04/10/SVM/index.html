@@ -110,7 +110,14 @@
 <meta property="og:image" content="https://berniel.github.io/2019/04/10/SVM/SVM4.png">
 <meta property="og:image" content="https://berniel.github.io/2019/04/10/SVM/SVM5.png">
 <meta property="og:image" content="https://berniel.github.io/2019/04/10/SVM/SVM6.jpg">
-<meta property="og:updated_time" content="2019-04-11T13:25:49.137Z">
+<meta property="og:image" content="https://berniel.github.io/2019/04/10/SVM/SVM7.jpg">
+<meta property="og:image" content="https://berniel.github.io/2019/04/10/SVM/SVM8.png">
+<meta property="og:image" content="https://berniel.github.io/2019/04/10/SVM/SVM9.jpg">
+<meta property="og:image" content="https://berniel.github.io/2019/04/10/SVM/SVM10.png">
+<meta property="og:image" content="https://berniel.github.io/2019/04/10/SVM/SVM11.jpg">
+<meta property="og:image" content="https://berniel.github.io/2019/04/10/SVM/SVM12.jpg">
+<meta property="og:image" content="https://berniel.github.io/2019/04/10/SVM/SVM13.png">
+<meta property="og:updated_time" content="2019-04-14T04:17:07.598Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习笔记（二）支持向量机">
 <meta name="twitter:description" content="支持向量机1.原理与目标目标找到一个目标函数$L(\theta)$，求解最优的参数$\theta$。 内容我们在这里先画个大饼：支持向量机SVM包括什么呢？  线性可分支持向量机首先，我们假定数据集是线性可分的。如上面这张图，划一条线（我们称之为分界面）就能把两类数据完完全全地分开。这时我们的目标是硬间隔最大化，称使用这种方法构建的SVM叫做硬间隔支持向量机。  线性支持向量机当然，实际生活中不可">
@@ -417,7 +424,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-11 21:25:49" itemprop="dateModified" datetime="2019-04-11T21:25:49+08:00">2019-04-11</time>
+                <time title="修改时间：2019-04-14 12:17:07" itemprop="dateModified" datetime="2019-04-14T12:17:07+08:00">2019-04-14</time>
               
             
           </span>
@@ -527,11 +534,44 @@
 <li><p>求解</p>
 <script type="math/tex; mode=display">\alpha^* = \arg\max_\alpha(minL) = \arg\max_\alpha(\sum^n_{i=0} \alpha_i - \frac{1}{2}\sum^n_{i=1}\sum^n_{j=1}\alpha_i \alpha_j y_i y_j x_i x_j)</script></li>
 <li><p>最优解<br>经过上面的若干求解步骤，我们获得了最优的</p>
-<script type="math/tex; mode=display">w^* = \sum^n_{i=1}\alpha_iy_ix_i</script><script type="math/tex; mode=display">b^* = y_j - \sum^N_{i=1}\alpha_i^*y_i(x_i \cdot x_j)</script><p>其中，$j$为$\alpha^<em>$的一个正分量$\alpha_j^</em>&gt;0$的下标。实际上，$w^<em>$和$b^</em>$的取值只取决于$\alpha_j &gt; 0$的样本点$(x_i,y_i)$，<strong>这些样本点就是支持向量</strong>。</p>
-<p>分离超平面：</p>
+<script type="math/tex; mode=display">w^* = \sum^n_{i=1}\alpha_iy_ix_i</script><script type="math/tex; mode=display">b^* = y_j - \sum^N_{i=1}\alpha_i^*y_i(x_i \cdot x_j)</script><p>其中，$j$为$\alpha^<em>$的一个正分量$\alpha_j^</em>&gt;0$的下标。实际上，$w^<em>$和$b^</em>$的取值只取决于$\alpha_j &gt; 0$的样本点$(x_i,y_i)$，<strong>这些样本点就是支持向量</strong>。<br>然而，实际中往往取支持向量的所有值取平均，作为$b^*$：</p>
+<script type="math/tex; mode=display">b^*=\frac{\max_{i:y_i=-1}w^* \cdot x_i + \min_{i:y_i=1}w^* \cdot x_i}{2}</script><p>分离超平面：</p>
 <script type="math/tex; mode=display">w^*x + b^* = 0</script><p>分类决策函数：</p>
 <script type="math/tex; mode=display">f(x) = sign(w^*x + b^*)</script></li>
 </ol>
+<h2 id="3-线性SVM"><a href="#3-线性SVM" class="headerlink" title="3. 线性SVM"></a>3. 线性SVM</h2><h3 id="简单理解线性SVM"><a href="#简单理解线性SVM" class="headerlink" title="简单理解线性SVM"></a>简单理解线性SVM</h3><p>线性SVM的思想就是在线性可分SVM的基础上，对每一个样本点$(x_i, y_i)$引入了一个<strong>松弛因子</strong>$\xi_i$，使得</p>
+<script type="math/tex; mode=display">y_i(w^Tx_i+b)\geq 1-\xi_i</script><p>什么意思呢？我们看这个图。<br><img src="/2019/04/10/SVM/SVM7.jpg" alt="松弛因子"><br>在线性可分SVM中，我们要求所有样本点的间隔必须大于等于1。放在这张图中，我们假定下面的蓝线是正例，那么蓝线和蓝线下的所有样本点的松弛因子$\xi_i=0$。而在蓝线与红线之间的样本点的松弛因子则为$\xi_i &lt; 1$，意思是指虽然它不在间隔之外，但是我们对它采取了一定的松弛，让它可以被划分在正例里面。类似的，对于已经越过了超平面的正例点，它对应的松弛因子$\xi_i&gt;1$，划分到正例里面。画在图像里大概是下面的蓝色曲线的样子。<br><img src="/2019/04/10/SVM/SVM8.png" alt="Hinge Loss"><br>当然，把它们划分到正例并不是白划的，是要算<strong>损失</strong>的。我们在线性可分SVM的基础上，引入了这个松弛因子作为损失。松弛因子越大，表示样本偏离正确分类越远，损失也就越大。</p>
+<h3 id="线性SVM的目标函数"><a href="#线性SVM的目标函数" class="headerlink" title="线性SVM的目标函数"></a>线性SVM的目标函数</h3><p>因为有了松弛因子作为损失，线性SVM的目标函数演变为</p>
+<script type="math/tex; mode=display">\min_{w, b, \xi}\frac{1}{2}||w||^2 + C\sum^N_{i=1}\xi_i,\\\text{ s.t. } y_i(w^Tx_i+b)\geq 1-\xi_i, \xi_i \geq 0</script><p>这个目标函数的几何含义为：<br>（1）让$\frac{1}{2}||w||$尽量小，即让间隔尽量大（同线性可分SVM）<br>（2）让误分类点的个数尽量小。</p>
+<p>而$C$则是这两点之间的调和，称作<strong>惩罚参数</strong>。可以看出，$C$很小时，对误分类的惩罚很小，而$C$很大时，对误分类的惩罚加大。特别的，如果$C=\infty$，那么一点点小小的错误$\xi_i$也会使损失疯狂加大，此时误差$\xi_i$只能为0，退化为线性可分SVM。也就是说，$C$太大时，模型对误差的容忍程度很低，在训练精度上会提升，但是非常容易过拟合。<strong>当出现过拟合时可以考虑减小$C$。</strong></p>
+<p>另外，有没有发现这个目标函数很眼熟？如果我们把$\sum^N_{i=1}\xi_i$作为损失函数（事实上$\xi_i$也确实被我们认作是损失），$||w||^2 $不是就是一个现成的L2正则吗？事实上，这个目标函数也确实等价于一个加L2正则的损失函数，这个损失函数$\xi_i$还有一个名字，叫做<strong>Hinge Loss</strong>，它的图像在前面。</p>
+<h3 id="目标函数求解-1"><a href="#目标函数求解-1" class="headerlink" title="目标函数求解"></a>目标函数求解</h3><p>依旧利用拉格朗日函数</p>
+<script type="math/tex; mode=display">L(w, b, \xi, \alpha, \mu) = \frac{1}{2}||w||^2 + C\sum^N_{i=1}\xi_i - \sum^n_{i=1}\alpha_i(y_i(w\cdot x_i+b)-1+\xi_i) - \sum^n_{i=1}\mu_i\xi_i</script><p>分别对$w, b, \xi$求偏导”</p>
+<script type="math/tex; mode=display">\frac{\partial L}{\partial w}=w-\sum^n_{i=1}\alpha_i y_i x_i = 0 \Rightarrow w^*=\sum^n_{i=1}\alpha_i y_i x_i</script><script type="math/tex; mode=display">\frac{\partial L}{\partial b} = \sum^n_{i=1} \alpha_i y_i = 0</script><script type="math/tex; mode=display">\frac{\partial L}{\partial \xi} = C-\alpha_i-\mu_i = 0</script><p>带回原公式，得到</p>
+<script type="math/tex; mode=display">\min_{w, b, \xi}L = \sum^n_{i=1}\alpha_i - \frac{1}{2}\sum^n_{i=1}\sum^n_{j=1}\alpha_i \alpha_j y_i y_j x_i x_j</script><p>（居然和线性可分SVM一样）对这个式子求关于$\alpha$的极大，得到</p>
+<script type="math/tex; mode=display">\alpha^* = \arg\max_\alpha(minL) = \arg\max_\alpha(\sum^n_{i=0} \alpha_i - \frac{1}{2}\sum^n_{i=1}\sum^n_{j=1}\alpha_i \alpha_j y_i y_j x_i x_j)</script><script type="math/tex; mode=display">\text{s.t. } \sum^n_{i=1} \alpha_i y_i = 0, C-\alpha_i-\mu_i = 0, \alpha_1 \geq 0, \mu_i \geq 0</script><p>对后三项约束化简，得到</p>
+<script type="math/tex; mode=display">\text{s.t. } \sum^n_{i=1} \alpha_i y_i = 0, 0 \leq \alpha_i \leq C</script><p>特别的，当$C=\inf$时，退化为线性可分SVM。整理后，求解最优解：</p>
+<script type="math/tex; mode=display">\alpha^* = \arg\min_\alpha(minL) = \arg\min_\alpha(\frac{1}{2}\sum^n_{i=1}\sum^n_{j=1}\alpha_i \alpha_j y_i y_j x_i x_j - \sum^n_{i=0} \alpha_i )</script><script type="math/tex; mode=display">\text{s.t. } \sum^n_{i=1} \alpha_i y_i = 0, 0 \leq \alpha_i \leq C</script><p>经过上面的若干求解步骤，我们获得了最优的</p>
+<script type="math/tex; mode=display">w^* = \sum^n_{i=1}\alpha_iy_ix_i</script><script type="math/tex; mode=display">b^*=\frac{\max_{i:y_i=-1}w^* \cdot x_i + \min_{i:y_i=1}w^* \cdot x_i}{2}</script><p>分离超平面：</p>
+<script type="math/tex; mode=display">w^*x + b^* = 0</script><p>分类决策函数：</p>
+<script type="math/tex; mode=display">f(x) = sign(w^*x + b^*)</script><h2 id="4-核函数与非线性SVM"><a href="#4-核函数与非线性SVM" class="headerlink" title="4. 核函数与非线性SVM"></a>4. 核函数与非线性SVM</h2><h3 id="核函数"><a href="#核函数" class="headerlink" title="核函数"></a>核函数</h3><p>在原始数据线性不可分的条件下，可以使用核函数，将原始输入空间映射到新的特征空间，从而使原本线性不可分的样本可能在核空间可分。常见的核函数有：</p>
+<p>多项式核函数：$\kappa(x_1, x_2) = (x_1 \cdot x_2 + c)^d$<br>高斯核函数：$\kappa(x_1, x_2) = e^{-\gamma||x_1-x_2||^2}$<br>Sigmoid核函数：$\kappa(x_1, x_2) = \tanh(x_1\cdot x_2 + c)$</p>
+<p>在实际应用中，往往依赖先验知识/交叉验证等方案选择有效的核函数。在没有更多先验信息的条件下，可以使用<strong>高斯核函数</strong>。如果发现线性SVM分类精度已经非常好，就没有必要选择多项式核/高斯核。但如果线性SVM分类精度不够高的时候，可以考虑多项式核/高斯核。一般来说，在多项式核和高斯核训练精度差不多的情况下，经验上多项式核可能会有更好的泛化能力，高斯核则容易过拟合。</p>
+<p>事实上，往往核函数用来将输入空间$R^n$映射到一个更高维的空间。下面是一个多项式核函数的例子：<br><img src="/2019/04/10/SVM/SVM9.jpg" alt="多项式核函数举例"><br>可以看出，核函数的引入相当于将原来的$x$映射到了$\Phi(x)$，即$\kappa(x_1, x_2)=\Phi(x_1) \cdot \Phi(x_2)$。<br>而如果我们一个一个对数据进行升维将$x \rightarrow \Phi(x)$，再进行点积，显然没有直接计算核函数$\kappa(x_1, x_2)$节省计算量。</p>
+<p>高斯核函数则更特殊一些，它能将特征空间映射到无穷维。<br><img src="/2019/04/10/SVM/SVM10.png" alt="高斯核"></p>
+<h3 id="非线性SVM"><a href="#非线性SVM" class="headerlink" title="非线性SVM"></a>非线性SVM</h3><p>将核函数应用到SVM中，其实就是把原目标函数中的$x_i \cdot x_j$改为$\kappa(x_i, x_j)$，即</p>
+<script type="math/tex; mode=display">\min_{w, b, \xi}L = \sum^n_{i=1}\alpha_i - \frac{1}{2}\sum^n_{i=1}\sum^n_{j=1}\alpha_i \alpha_j y_i y_j \kappa(x_i, x_j)</script><p>其效果相当于把$x_i, x_j$升维到$\Phi(x_i), \Phi(x_j)$然后点乘，利用核函数能够减小计算量，避免维数太高导致的维数灾难。</p>
+<p>关于升维的一种解释，可以看下图，在低维空间下的一个非线性曲面，在高维空间下可能能够用一个线性的超平面划分，映射回低维空间就可以进行分类。<br><img src="/2019/04/10/SVM/SVM11.jpg" alt="核函数映射"></p>
+<p>同时，分类决策函数中的内积也可以用核函数代替，分类决策函数式成为</p>
+<script type="math/tex; mode=display">f(x) = sign(w^*\Phi(x) + b^*) = sign(\sum^n_{i=1}\alpha_i^* y_i (\Phi(x_i)\cdot \Phi(x)) + b^*) \\= sign(\sum^n_{i=1}\alpha_i^* y_i \kappa(x_i, x) + b^*)</script><p>就完全避免了计算$\Phi(x)$这么一个升维步骤的麻烦。</p>
+<h2 id="5-关于调参"><a href="#5-关于调参" class="headerlink" title="5. 关于调参"></a>5. 关于调参</h2><p>整个SVM这章中，可调的超参主要集中在：<br>（1）线性SVM中的惩罚因子$C$（决定误分类损失和间隔哪个比重大）<br>（2）核函数中的参数，比如说多项式核函数的常数$c$，指数$d$以及高斯核函数中的$\gamma$<br>其中，多项式核函数的作用无非是对输入做了一个多项式级的升维，$d$越大维数越高，就不再讨论了。</p>
+<p>我们主要看$C$和$\gamma$。从下面的图可以看出，$C$越大，对误分类的惩罚越大，训练时的分类精度会更高；$\gamma$越大，学习器拥有更强大的分类能力，也越容易过拟合。特别地，如果$\gamma$太小时，SVM很有可能会变成一个线性分类器；$\gamma$太大时，SVM很有可能会变成一个KNN。</p>
+<p><img src="/2019/04/10/SVM/SVM12.jpg" alt="参数"></p>
+<p>另外，关于$\gamma$的一点讨论：可以发现，$e^{-\gamma||x_1-x_2||^2}$中的$\gamma$和方差是成倒数关系的。对应到图像上就是$\gamma$越大，方差越小，高斯曲线的宽度越窄，衰减越快。如果负例方差大，正例方差小，有可能会出现“负例包裹了正例”的样子。</p>
+<p><img src="/2019/04/10/SVM/SVM13.png" alt="核函数映射"></p>
+<hr>
+<p><strong>参考资料</strong></p>
+<p>机器学习升级版6（讲师：邹博）<br>统计机器学习<br>西瓜书</p>
 
       
     </div>
@@ -798,7 +838,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#支持向量机"><span class="nav-number">1.</span> <span class="nav-text">支持向量机</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-原理与目标"><span class="nav-number">1.1.</span> <span class="nav-text">1.原理与目标</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#目标"><span class="nav-number">1.1.1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内容"><span class="nav-number">1.1.2.</span> <span class="nav-text">内容</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-线性可分SVM"><span class="nav-number">1.2.</span> <span class="nav-text">2. 线性可分SVM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#对SVM的简单理解"><span class="nav-number">1.2.1.</span> <span class="nav-text">对SVM的简单理解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#公式推导"><span class="nav-number">1.2.2.</span> <span class="nav-text">公式推导</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#最初的目标函数"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">最初的目标函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#优化的目标函数"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">优化的目标函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#目标函数求解"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">目标函数求解</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#支持向量机"><span class="nav-number">1.</span> <span class="nav-text">支持向量机</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-原理与目标"><span class="nav-number">1.1.</span> <span class="nav-text">1.原理与目标</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#目标"><span class="nav-number">1.1.1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内容"><span class="nav-number">1.1.2.</span> <span class="nav-text">内容</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-线性可分SVM"><span class="nav-number">1.2.</span> <span class="nav-text">2. 线性可分SVM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#对SVM的简单理解"><span class="nav-number">1.2.1.</span> <span class="nav-text">对SVM的简单理解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#公式推导"><span class="nav-number">1.2.2.</span> <span class="nav-text">公式推导</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#最初的目标函数"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">最初的目标函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#优化的目标函数"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">优化的目标函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#目标函数求解"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">目标函数求解</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-线性SVM"><span class="nav-number">1.3.</span> <span class="nav-text">3. 线性SVM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简单理解线性SVM"><span class="nav-number">1.3.1.</span> <span class="nav-text">简单理解线性SVM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线性SVM的目标函数"><span class="nav-number">1.3.2.</span> <span class="nav-text">线性SVM的目标函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#目标函数求解-1"><span class="nav-number">1.3.3.</span> <span class="nav-text">目标函数求解</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-核函数与非线性SVM"><span class="nav-number">1.4.</span> <span class="nav-text">4. 核函数与非线性SVM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#核函数"><span class="nav-number">1.4.1.</span> <span class="nav-text">核函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非线性SVM"><span class="nav-number">1.4.2.</span> <span class="nav-text">非线性SVM</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-关于调参"><span class="nav-number">1.5.</span> <span class="nav-text">5. 关于调参</span></a></li></ol></li></ol></div>
             
 
           </div>
