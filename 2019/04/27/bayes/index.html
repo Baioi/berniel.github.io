@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="Bernie Liang&#39;s Blog">
 <meta property="og:description" content="贝叶斯分类器1. 贝叶斯决策论先插个无关的小话题当做趣味阅读吧：关于统计学中频率学派和贝叶斯学派的争端（来源：CSDN博客） 然后开启我们这周的学习之旅。 目标与风险对于分类任务来说，在所有相关概率都已知的理想情形下，贝叶斯决策论考虑的是如何基于这些概率和误判损失来选择最优的类别标记。我们拿多分类问题来举例。 假设一个分类问题有$N$类，即$\mathcal{Y} = {c_1, c_2, …,">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-27T15:33:31.392Z">
+<meta property="og:updated_time" content="2019-04-27T15:42:45.922Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习笔记（三） 贝叶斯分类器">
 <meta name="twitter:description" content="贝叶斯分类器1. 贝叶斯决策论先插个无关的小话题当做趣味阅读吧：关于统计学中频率学派和贝叶斯学派的争端（来源：CSDN博客） 然后开启我们这周的学习之旅。 目标与风险对于分类任务来说，在所有相关概率都已知的理想情形下，贝叶斯决策论考虑的是如何基于这些概率和误判损失来选择最优的类别标记。我们拿多分类问题来举例。 假设一个分类问题有$N$类，即$\mathcal{Y} = {c_1, c_2, …,">
@@ -393,7 +393,7 @@
                 
               
 
-              <time title="创建时间：2019-04-27 21:20:14 / 修改时间：23:33:31" itemprop="dateCreated datePublished" datetime="2019-04-27T21:20:14+08:00">2019-04-27</time>
+              <time title="创建时间：2019-04-27 21:20:14 / 修改时间：23:42:45" itemprop="dateCreated datePublished" datetime="2019-04-27T21:20:14+08:00">2019-04-27</time>
             
 
             
@@ -552,9 +552,9 @@
 <script type="math/tex; mode=display">h^*(x) = \arg\max_{c}P(c)\prod_{i=1}^{n}P(x_i|c)</script><p>其中，</p>
 <script type="math/tex; mode=display">P(c) = \frac{|D_c|}{|D|}</script><p>拿西瓜分类的例子来说，$P(好瓜)$就是好瓜出现的频率，即训练样本中好瓜的个数除以瓜的总数。</p>
 <p>对于离散的值，</p>
-<script type="math/tex; mode=display">P(x_i|c) = \frac{|D_{c, x_i}|}{|D_c|}</script><p>$|D_{c, x_i}|$表示$D_c$中在第$i$个属性上取值为$x_i$的样本组成的集合。比如说如果我用来测试的西瓜中，色泽是“青绿”色的，那么$P(青绿|好瓜)$为在训练样本的好瓜中色泽是青绿的瓜出现的频率，即好瓜中青绿色的瓜除以好瓜的总数。</p>
+<script type="math/tex; mode=display">P(x_i|c) = \frac{|D_{c, x_i}|}{|D_c|}</script><p>$|D_{c, x_i}|$表示$D_c$中在第$i$个属性上取值为$x_i$的样本组成的集合。比如说如果我用来测试的西瓜中，色泽是“青绿”色的，那么P(青绿|好瓜)为在训练样本的好瓜中色泽是青绿的瓜出现的频率，即好瓜中青绿色的瓜除以好瓜的总数。</p>
 <p>对于连续的值，考虑概率密度函数，假定它满足正态分布，即</p>
-<script type="math/tex; mode=display">p(x_i|c) = \frac{1}{\sqrt{2 \pi}\sigma_{c,i}}e^{-\frac{(x_i - \mu_{c,i})^2}{2\sigma_{c,i}^2}}</script><p>其中$\mu_{c,i}$和$\sigma^2_{c,i}$分别表示第i个属性在第c类样本取值的均差和方差。比如密度是0.697的西瓜，要计算$p(密度=0.697|好瓜)$，就要先求出好瓜中密度的均值和方差，再往公式中代入0.697计算。</p>
+<script type="math/tex; mode=display">p(x_i|c) = \frac{1}{\sqrt{2 \pi}\sigma_{c,i}}e^{-\frac{(x_i - \mu_{c,i})^2}{2\sigma_{c,i}^2}}</script><p>其中$\mu_{c,i}$和$\sigma^2_{c,i}$分别表示第i个属性在第c类样本取值的均差和方差。比如密度是0.697的西瓜，要计算p(密度=0.697|好瓜)，就要先求出好瓜中密度的均值和方差，再往公式中代入0.697计算。</p>
 <hr>
 <p>题外话，放松一下。</p>
 <p>对于朴素贝叶斯的理解，光这么看理论还是很抽象的，建议搭配例子手算一下，发现计算这个真的是特别特别的简单（统计学习方法P50，西瓜书P152）。不过我不知道是不是因为我的西瓜书是盗版的，西瓜书那个例子上面有好几个计算错误（好瓜的蜷缩、好瓜的凹陷等）。唉，对不起周志华老师。</p>
