@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="Bernie Liang&#39;s Blog">
 <meta property="og:description" content="贝叶斯分类器1. 贝叶斯决策论先插个无关的小话题当做趣味阅读吧：关于统计学中频率学派和贝叶斯学派的争端（来源：CSDN博客） 然后开启我们这周的学习之旅。 目标与风险对于分类任务来说，在所有相关概率都已知的理想情形下，贝叶斯决策论考虑的是如何基于这些概率和误判损失来选择最优的类别标记。我们拿多分类问题来举例。 假设一个分类问题有$N$类，即$\mathcal{Y} = {c_1, c_2, …,">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-27T15:42:45.922Z">
+<meta property="og:updated_time" content="2019-04-27T16:27:04.408Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习笔记（三） 贝叶斯分类器">
 <meta name="twitter:description" content="贝叶斯分类器1. 贝叶斯决策论先插个无关的小话题当做趣味阅读吧：关于统计学中频率学派和贝叶斯学派的争端（来源：CSDN博客） 然后开启我们这周的学习之旅。 目标与风险对于分类任务来说，在所有相关概率都已知的理想情形下，贝叶斯决策论考虑的是如何基于这些概率和误判损失来选择最优的类别标记。我们拿多分类问题来举例。 假设一个分类问题有$N$类，即$\mathcal{Y} = {c_1, c_2, …,">
@@ -393,12 +393,24 @@
                 
               
 
-              <time title="创建时间：2019-04-27 21:20:14 / 修改时间：23:42:45" itemprop="dateCreated datePublished" datetime="2019-04-27T21:20:14+08:00">2019-04-27</time>
+              <time title="创建时间：2019-04-27 21:20:14" itemprop="dateCreated datePublished" datetime="2019-04-27T21:20:14+08:00">2019-04-27</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-28 00:27:04" itemprop="dateModified" datetime="2019-04-28T00:27:04+08:00">2019-04-28</time>
               
             
           </span>
@@ -476,7 +488,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">3.2k</span>
+                <span title="本文字数">3.1k</span>
               
 
               
@@ -525,8 +537,7 @@
 </li>
 </ol>
 <p>我们找$h$的方法是最小化总体风险。而对于每个样本$\mathbf{x}$，如果$h$能最小化条件风险，那么总体风险也就能最小化了。这就产生了<strong>贝叶斯判定准则</strong>：为了最小化总体风险，只需要<strong>在每个样本上选择能使条件风险最小的类别标记</strong>，即</p>
-<script type="math/tex; mode=display">h^*(x) = \arg\min_{c}R(c|\mathbf{x})</script><p>此时，$h^<em>(x)$称为贝叶斯最优分类器，与之对应的总体风险$R(h^</em>)$称作贝叶斯风险，$1-R(h^*)$反映了模型的理论精度上限。</p>
-<a id="more"></a>
+<script type="math/tex; mode=display">h^*(x) = \arg\min_{c}R(c|\mathbf{x})</script><a id="more"></a>
 <h3 id="0-1误判损失"><a href="#0-1误判损失" class="headerlink" title="0/1误判损失"></a>0/1误判损失</h3><p>我们在条件风险的定义里面提到了一个$\lambda_{ij}$，取一个特殊的情况：如果我们的$\lambda_{ij}$是一个0/1损失函数，即</p>
 <script type="math/tex; mode=display">\lambda_{ij} = 
     \begin{cases}
@@ -550,7 +561,7 @@
 <p>为了避开估计类条件概率$P(\mathbf{x}|c)$中各属性联合概率的计算，朴素贝叶斯分类器<strong>假定</strong>样本$\mathbf{x}$中的属性相互独立（其实就是最大似然估计，我们在第一周的线性回归中就使用过），则原本的联合概率就可以拆开了，即</p>
 <script type="math/tex; mode=display">P(c|\mathbf{x}) == \frac{P(\mathbf{x}|c)P(c)}{P(\mathbf{x})} = \frac{P(c)}{P(\mathbf{x})}\prod_{i=1}^{n}P(x_i|c)</script><p>因此，朴素贝叶斯分类器的表达式为</p>
 <script type="math/tex; mode=display">h^*(x) = \arg\max_{c}P(c)\prod_{i=1}^{n}P(x_i|c)</script><p>其中，</p>
-<script type="math/tex; mode=display">P(c) = \frac{|D_c|}{|D|}</script><p>拿西瓜分类的例子来说，$P(好瓜)$就是好瓜出现的频率，即训练样本中好瓜的个数除以瓜的总数。</p>
+<script type="math/tex; mode=display">P(c) = \frac{|D_c|}{|D|}</script><p>拿西瓜分类的例子来说，P(好瓜)就是好瓜出现的频率，即训练样本中好瓜的个数除以瓜的总数。</p>
 <p>对于离散的值，</p>
 <script type="math/tex; mode=display">P(x_i|c) = \frac{|D_{c, x_i}|}{|D_c|}</script><p>$|D_{c, x_i}|$表示$D_c$中在第$i$个属性上取值为$x_i$的样本组成的集合。比如说如果我用来测试的西瓜中，色泽是“青绿”色的，那么P(青绿|好瓜)为在训练样本的好瓜中色泽是青绿的瓜出现的频率，即好瓜中青绿色的瓜除以好瓜的总数。</p>
 <p>对于连续的值，考虑概率密度函数，假定它满足正态分布，即</p>
@@ -871,7 +882,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">24 分钟</span>
+    <span title="站点阅读时长">23 分钟</span>
   
 </div>
 
@@ -1072,6 +1083,46 @@
   
   
 
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+    
   
 
 
